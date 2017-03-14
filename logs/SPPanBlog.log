@@ -40102,3 +40102,242 @@ FTL stack trace ("~" means nesting-related):
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:745)
 
+2017-03-14 14:20:09.638  INFO 15264 --- [restartedMain] net.sppan.SPPanBlogApplication           : Starting SPPanBlogApplication on admin-PC with PID 15264 (F:\tempWorkSpace\SPPanBlog_new\target\classes started by Administrator in F:\tempWorkSpace\SPPanBlog_new)
+2017-03-14 14:20:09.641 DEBUG 15264 --- [restartedMain] net.sppan.SPPanBlogApplication           : Running with Spring Boot v1.5.2.RELEASE, Spring v4.3.7.RELEASE
+2017-03-14 14:20:09.641  INFO 15264 --- [restartedMain] net.sppan.SPPanBlogApplication           : No active profile set, falling back to default profiles: default
+2017-03-14 14:20:09.797  INFO 15264 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e4e6897: startup date [Tue Mar 14 14:20:09 CST 2017]; root of context hierarchy
+2017-03-14 14:20:12.990  INFO 15264 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ab880df4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-03-14 14:20:13.675  INFO 15264 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-03-14 14:20:13.698  INFO 15264 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-03-14 14:20:13.699  INFO 15264 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-03-14 14:20:13.888  INFO 15264 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-03-14 14:20:13.888  INFO 15264 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4098 ms
+2017-03-14 14:20:14.258  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-03-14 14:20:14.266  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-03-14 14:20:14.267  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-03-14 14:20:14.267  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-03-14 14:20:14.268  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-03-14 14:20:15.477  INFO 15264 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:20:15.512  INFO 15264 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-03-14 14:20:15.668  INFO 15264 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2017-03-14 14:20:15.671  INFO 15264 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-03-14 14:20:15.674  INFO 15264 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-03-14 14:20:15.954  INFO 15264 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-03-14 14:20:16.250  INFO 15264 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-03-14 14:20:16.706  WARN 15264 --- [restartedMain] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : none.  Supported values include create, create-drop, update, and validate.  Ignoring
+2017-03-14 14:20:17.337  INFO 15264 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:20:18.205  INFO 15264 --- [restartedMain] o.s.w.s.v.f.FreeMarkerConfigurer         : ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2017-03-14 14:20:18.362  INFO 15264 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-03-14 14:20:19.623  INFO 15264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e4e6897: startup date [Tue Mar 14 14:20:09 CST 2017]; root of context hierarchy
+2017-03-14 14:20:19.874  INFO 15264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/b/{categoryId}/{pageNumber}]}" onto public java.lang.String net.sppan.controller.front.BlogController.index(java.lang.Long,java.lang.Integer,org.springframework.ui.ModelMap)
+2017-03-14 14:20:19.876  INFO 15264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String net.sppan.controller.front.IndexController.index()
+2017-03-14 14:20:19.878  INFO 15264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/about]}" onto public java.lang.String net.sppan.controller.front.IndexController.about()
+2017-03-14 14:20:19.883  INFO 15264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-03-14 14:20:19.884  INFO 15264 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-03-14 14:20:19.995  INFO 15264 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-03-14 14:20:19.996  INFO 15264 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-03-14 14:20:20.127  INFO 15264 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-03-14 14:20:20.766  INFO 15264 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-03-14 14:20:21.188  INFO 15264 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-03-14 14:20:21.328  INFO 15264 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-03-14 14:20:21.344  INFO 15264 --- [restartedMain] net.sppan.SPPanBlogApplication           : Started SPPanBlogApplication in 12.672 seconds (JVM running for 15.299)
+2017-03-14 14:20:52.671  INFO 15264 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-03-14 14:20:52.671  INFO 15264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-03-14 14:20:52.766  INFO 15264 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 94 ms
+2017-03-14 14:21:43.046  INFO 15264 --- [Thread-7] ationConfigEmbeddedWebApplicationContext : Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7e4e6897: startup date [Tue Mar 14 14:20:09 CST 2017]; root of context hierarchy
+2017-03-14 14:21:43.049  INFO 15264 --- [Thread-7] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2017-03-14 14:21:43.054  INFO 15264 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:21:44.237  INFO 15264 --- [restartedMain] net.sppan.SPPanBlogApplication           : Starting SPPanBlogApplication on admin-PC with PID 15264 (F:\tempWorkSpace\SPPanBlog_new\target\classes started by Administrator in F:\tempWorkSpace\SPPanBlog_new)
+2017-03-14 14:21:44.237 DEBUG 15264 --- [restartedMain] net.sppan.SPPanBlogApplication           : Running with Spring Boot v1.5.2.RELEASE, Spring v4.3.7.RELEASE
+2017-03-14 14:21:44.238  INFO 15264 --- [restartedMain] net.sppan.SPPanBlogApplication           : No active profile set, falling back to default profiles: default
+2017-03-14 14:21:44.251  INFO 15264 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7795dce2: startup date [Tue Mar 14 14:21:44 CST 2017]; root of context hierarchy
+2017-03-14 14:21:45.539  INFO 15264 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ab880df4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-03-14 14:21:45.695  INFO 15264 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-03-14 14:21:45.696  INFO 15264 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-03-14 14:21:45.696  INFO 15264 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-03-14 14:21:45.716  INFO 15264 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-03-14 14:21:45.719  INFO 15264 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1468 ms
+2017-03-14 14:21:45.788  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-03-14 14:21:45.788  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-03-14 14:21:45.789  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-03-14 14:21:45.789  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-03-14 14:21:45.789  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-03-14 14:21:46.168  INFO 15264 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:21:46.168  INFO 15264 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-03-14 14:21:46.211  INFO 15264 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-03-14 14:21:46.258  WARN 15264 --- [restartedMain] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : none.  Supported values include create, create-drop, update, and validate.  Ignoring
+2017-03-14 14:21:46.365  INFO 15264 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:21:46.374  WARN 15264 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'SPPanBlogApplication': Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect bean class [net.sppan.SPPanBlogApplication$$EnhancerBySpringCGLIB$$99675826] for persistence metadata: could not find class that it depends on
+2017-03-14 14:21:46.375  INFO 15264 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:21:46.380  INFO 15264 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service Tomcat
+2017-03-14 14:21:46.397  INFO 15264 --- [restartedMain] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-03-14 14:21:46.410 ERROR 15264 --- [restartedMain] o.s.boot.SpringApplication               : Application startup failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'SPPanBlogApplication': Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect bean class [net.sppan.SPPanBlogApplication$$EnhancerBySpringCGLIB$$99675826] for persistence metadata: could not find class that it depends on
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:526)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:737)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at net.sppan.SPPanBlogApplication.main(SPPanBlogApplication.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Failed to introspect bean class [net.sppan.SPPanBlogApplication$$EnhancerBySpringCGLIB$$99675826] for persistence metadata: could not find class that it depends on
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.findPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:401)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(PersistenceAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:992)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:523)
+	... 20 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: Lnet/sppan/config/intercepter/CommonIntercepter;
+	at java.lang.Class.getDeclaredFields0(Native Method)
+	at java.lang.Class.privateGetDeclaredFields(Class.java:2583)
+	at java.lang.Class.getDeclaredFields(Class.java:1916)
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:715)
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:656)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.buildPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:418)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.findPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:397)
+	... 23 common frames omitted
+Caused by: java.lang.ClassNotFoundException: net.sppan.config.intercepter.CommonIntercepter
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 30 common frames omitted
+
+2017-03-14 14:21:50.248  INFO 15264 --- [restartedMain] net.sppan.SPPanBlogApplication           : Starting SPPanBlogApplication on admin-PC with PID 15264 (F:\tempWorkSpace\SPPanBlog_new\target\classes started by Administrator in F:\tempWorkSpace\SPPanBlog_new)
+2017-03-14 14:21:50.248 DEBUG 15264 --- [restartedMain] net.sppan.SPPanBlogApplication           : Running with Spring Boot v1.5.2.RELEASE, Spring v4.3.7.RELEASE
+2017-03-14 14:21:50.248  INFO 15264 --- [restartedMain] net.sppan.SPPanBlogApplication           : No active profile set, falling back to default profiles: default
+2017-03-14 14:21:50.254  INFO 15264 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@30ab1e14: startup date [Tue Mar 14 14:21:50 CST 2017]; root of context hierarchy
+2017-03-14 14:21:51.437  INFO 15264 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ab880df4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-03-14 14:21:51.573  INFO 15264 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-03-14 14:21:51.575  INFO 15264 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-03-14 14:21:51.575  INFO 15264 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-03-14 14:21:51.596  INFO 15264 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2017-03-14 14:21:51.597  INFO 15264 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1343 ms
+2017-03-14 14:21:51.665  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-03-14 14:21:51.666  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-03-14 14:21:51.666  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-03-14 14:21:51.666  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-03-14 14:21:51.667  INFO 15264 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-03-14 14:21:52.004  INFO 15264 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:21:52.005  INFO 15264 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-03-14 14:21:52.056  INFO 15264 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-03-14 14:21:52.091  WARN 15264 --- [restartedMain] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : none.  Supported values include create, create-drop, update, and validate.  Ignoring
+2017-03-14 14:21:52.195  INFO 15264 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:21:52.203  WARN 15264 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'SPPanBlogApplication': Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect bean class [net.sppan.SPPanBlogApplication$$EnhancerBySpringCGLIB$$99675826] for persistence metadata: could not find class that it depends on
+2017-03-14 14:21:52.203  INFO 15264 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:21:52.209  INFO 15264 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service Tomcat
+2017-03-14 14:21:52.240  INFO 15264 --- [restartedMain] utoConfigurationReportLoggingInitializer : 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-03-14 14:21:52.244 ERROR 15264 --- [restartedMain] o.s.boot.SpringApplication               : Application startup failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'SPPanBlogApplication': Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect bean class [net.sppan.SPPanBlogApplication$$EnhancerBySpringCGLIB$$99675826] for persistence metadata: could not find class that it depends on
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:526)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:737)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at net.sppan.SPPanBlogApplication.main(SPPanBlogApplication.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.IllegalStateException: Failed to introspect bean class [net.sppan.SPPanBlogApplication$$EnhancerBySpringCGLIB$$99675826] for persistence metadata: could not find class that it depends on
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.findPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:401)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(PersistenceAnnotationBeanPostProcessor.java:333)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:992)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:523)
+	... 20 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: Lnet/sppan/config/intercepter/CommonIntercepter;
+	at java.lang.Class.getDeclaredFields0(Native Method)
+	at java.lang.Class.privateGetDeclaredFields(Class.java:2583)
+	at java.lang.Class.getDeclaredFields(Class.java:1916)
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:715)
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:656)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.buildPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:418)
+	at org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor.findPersistenceMetadata(PersistenceAnnotationBeanPostProcessor.java:397)
+	... 23 common frames omitted
+Caused by: java.lang.ClassNotFoundException: net.sppan.config.intercepter.CommonIntercepter
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 30 common frames omitted
+
+2017-03-14 14:22:03.518  INFO 15644 --- [restartedMain] net.sppan.blog.SPPanBlogApplication      : Starting SPPanBlogApplication on admin-PC with PID 15644 (F:\tempWorkSpace\SPPanBlog_new\target\classes started by Administrator in F:\tempWorkSpace\SPPanBlog_new)
+2017-03-14 14:22:03.520 DEBUG 15644 --- [restartedMain] net.sppan.blog.SPPanBlogApplication      : Running with Spring Boot v1.5.2.RELEASE, Spring v4.3.7.RELEASE
+2017-03-14 14:22:03.520  INFO 15644 --- [restartedMain] net.sppan.blog.SPPanBlogApplication      : No active profile set, falling back to default profiles: default
+2017-03-14 14:22:03.685  INFO 15644 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@47f92371: startup date [Tue Mar 14 14:22:03 CST 2017]; root of context hierarchy
+2017-03-14 14:22:06.955  INFO 15644 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$63e163a0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-03-14 14:22:07.624  INFO 15644 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8080 (http)
+2017-03-14 14:22:07.644  INFO 15644 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-03-14 14:22:07.645  INFO 15644 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-03-14 14:22:07.834  INFO 15644 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-03-14 14:22:07.834  INFO 15644 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4154 ms
+2017-03-14 14:22:08.256  INFO 15644 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-03-14 14:22:08.263  INFO 15644 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-03-14 14:22:08.264  INFO 15644 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-03-14 14:22:08.264  INFO 15644 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-03-14 14:22:08.264  INFO 15644 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-03-14 14:22:10.540  INFO 15644 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:22:10.598  INFO 15644 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-03-14 14:22:10.743  INFO 15644 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2017-03-14 14:22:10.746  INFO 15644 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-03-14 14:22:10.749  INFO 15644 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-03-14 14:22:11.810  INFO 15644 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-03-14 14:22:12.134  INFO 15644 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2017-03-14 14:22:13.148  WARN 15644 --- [restartedMain] o.h.b.i.SessionFactoryBuilderImpl        : Unrecognized hbm2ddl_auto value : none.  Supported values include create, create-drop, update, and validate.  Ignoring
+2017-03-14 14:22:13.880  INFO 15644 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-03-14 14:22:16.392  INFO 15644 --- [restartedMain] o.s.w.s.v.f.FreeMarkerConfigurer         : ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2017-03-14 14:22:16.543  INFO 15644 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2017-03-14 14:22:18.184  INFO 15644 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@47f92371: startup date [Tue Mar 14 14:22:03 CST 2017]; root of context hierarchy
+2017-03-14 14:22:18.391  INFO 15644 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/b/{categoryId}/{pageNumber}]}" onto public java.lang.String net.sppan.blog.controller.front.BlogController.index(java.lang.Long,java.lang.Integer,org.springframework.ui.ModelMap)
+2017-03-14 14:22:18.393  INFO 15644 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/]}" onto public java.lang.String net.sppan.blog.controller.front.IndexController.index()
+2017-03-14 14:22:18.394  INFO 15644 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/about]}" onto public java.lang.String net.sppan.blog.controller.front.IndexController.about()
+2017-03-14 14:22:18.398  INFO 15644 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-03-14 14:22:18.399  INFO 15644 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-03-14 14:22:18.481  INFO 15644 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-03-14 14:22:18.482  INFO 15644 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-03-14 14:22:18.579  INFO 15644 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-03-14 14:22:19.211  INFO 15644 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-03-14 14:22:19.667  INFO 15644 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-03-14 14:22:19.851  INFO 15644 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
+2017-03-14 14:22:19.859  INFO 15644 --- [restartedMain] net.sppan.blog.SPPanBlogApplication      : Started SPPanBlogApplication in 17.074 seconds (JVM running for 18.996)
+2017-03-14 14:23:34.042  INFO 15644 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-03-14 14:23:34.042  INFO 15644 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-03-14 14:23:34.100  INFO 15644 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 58 ms
