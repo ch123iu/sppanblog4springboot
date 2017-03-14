@@ -19,6 +19,15 @@ public class LoginLog implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -7865774537910926746L;
+	
+	
+
+	public LoginLog(User user, Date loginAt, String ip) {
+		super();
+		this.user = user;
+		this.loginAt = loginAt;
+		this.ip = ip;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

@@ -29,7 +29,7 @@ public class Session implements Serializable{
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	private String expireAt;
+	private Long expireAt;
 
 	public Long getId() {
 		return id;
@@ -55,11 +55,11 @@ public class Session implements Serializable{
 		this.user = user;
 	}
 
-	public String getExpireAt() {
+	public Long getExpireAt() {
 		return expireAt;
 	}
 
-	public void setExpireAt(String expireAt) {
+	public void setExpireAt(Long expireAt) {
 		this.expireAt = expireAt;
 	}
 
