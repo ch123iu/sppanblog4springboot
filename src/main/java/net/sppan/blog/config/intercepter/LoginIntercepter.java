@@ -34,6 +34,7 @@ public class LoginIntercepter implements HandlerInterceptor{
 			//从登录缓存中取当前的登录用户
 			Object object = cacheKit.get(Constat.cache_loginUser, sessionId);
 			if (object != null) {
+				request.setAttribute("loginUser", object);
 				return true;
 			}
 		}

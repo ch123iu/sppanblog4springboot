@@ -70,7 +70,9 @@
            	   data: data.field,
            	   success: function(result){
            		   if(result.code == 0){
-						layer.msg(result.message,{icon:1});
+						layer.msg(result.message,{icon:1},function(){
+							window.location.href = "${ctx!}/admin/index"
+						});
            		   }else{
            				layer.msg(result.message,{icon:2});
            		   }

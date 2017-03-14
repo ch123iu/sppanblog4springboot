@@ -8,6 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CategoryRepository extends JpaRepository<Category, Long>{
 
-	List<Category> findByStatus(int i);
+	/**
+	 * 根据状态获取分类列表
+	 * @param status
+	 * @return
+	 */
+	List<Category> findByStatus(Integer status);
 
 }

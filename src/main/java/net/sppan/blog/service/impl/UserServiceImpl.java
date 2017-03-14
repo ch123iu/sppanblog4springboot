@@ -17,6 +17,8 @@ import net.sppan.blog.utils.CacheKit;
 import net.sppan.blog.utils.MD5Kit;
 import net.sppan.blog.utils.StrKit;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -67,6 +69,11 @@ public class UserServiceImpl implements UserService {
 		}else{
 			throw new ServiceException("用户名或者密码不正确");
 		}
+	}
+
+	@Override
+	public Page<User> findAll(PageRequest pageRequest) {
+		return userRepository.findAll(pageRequest);
 	}
 
 }

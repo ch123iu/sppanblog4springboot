@@ -52,8 +52,13 @@ public class AdminIndexController {
 		}
 	}
 
-	@RequestMapping("/")
+	@RequestMapping(value = { "/", "/index" })
 	public String index(){
 		return "admin/index";
+	}
+	
+	@RequestMapping("/welcome")
+	public String welcome(){
+		return "admin/welcome";
 	}
 }
