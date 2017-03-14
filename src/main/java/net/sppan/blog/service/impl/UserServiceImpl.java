@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import net.sppan.blog.common.Constat;
 import net.sppan.blog.dao.LoginLogRepository;
 import net.sppan.blog.dao.SessionRepository;
 import net.sppan.blog.dao.UserRepository;
@@ -57,7 +58,7 @@ public class UserServiceImpl implements UserService {
 			session.setExpireAt(expireAt);
 			sessionRepository.save(session);
 			
-			cacheKit.put("loginUser", sessionId, user);
+			cacheKit.put(Constat.cache_loginUser, sessionId, user);
 			
 			//添加登录日志
 			loginLogRepository.save(new LoginLog(user,new Date(),ip));

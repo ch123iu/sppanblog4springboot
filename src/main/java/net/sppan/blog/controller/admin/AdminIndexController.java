@@ -52,4 +52,8 @@ public class AdminIndexController {
 		}
 	}
 
+	@RequestMapping("/")
+	public String index(){
+		return "admin/index";
+	}
 }
