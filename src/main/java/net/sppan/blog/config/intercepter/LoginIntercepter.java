@@ -5,6 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sppan.blog.common.Constat;
+import net.sppan.blog.entity.Session;
+import net.sppan.blog.entity.User;
+import net.sppan.blog.service.SessionService;
+import net.sppan.blog.service.UserService;
 import net.sppan.blog.utils.CacheKit;
 import net.sppan.blog.utils.CookieKit;
 
@@ -23,6 +27,10 @@ public class LoginIntercepter implements HandlerInterceptor{
 	
 	@Resource
 	private CacheKit cacheKit;
+	@Resource
+	private SessionService sessionService;
+	@Resource
+	private UserService userService;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request,
@@ -36,6 +44,15 @@ public class LoginIntercepter implements HandlerInterceptor{
 			if (object != null) {
 				request.setAttribute("loginUser", object);
 				return true;
+			}else {
+				//如果缓存中没有登录的用户，则去数据库中取对应的session
+				Session session = sessionService.findBySessionId(sessionId);
+				//数据库中存在session，并且还没有过期，则进行登录操作
+				if (session != null && session.getExpireAt() - System.currentTimeMillis() >0) {
+					User user = session.getUser();
+					cacheKit.put(Constat.cache_loginUser, sessionId, user);
+					return true;
+				}
 			}
 		}
 		//删除无用cookie
