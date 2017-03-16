@@ -46,7 +46,7 @@ public class AdminIndexController {
 			//把sessionID写入cookie
 			CookieKit.setSessionId2Cookie(response, session.getSessionId(), ip, true);
 			
-			return JsonResult.success("登录成功");
+			return JsonResult.success("登录成功","/admin/index");
 		} catch (Exception e) {
 			return JsonResult.failure(e.getMessage());
 		}

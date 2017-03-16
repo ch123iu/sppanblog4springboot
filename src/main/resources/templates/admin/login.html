@@ -1,90 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <title>${siteName!} - 管理后台登录</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>${siteName!} - 管理后台登录</title>
-    <link rel="stylesheet" href="${ctx!}/layui/css/layui.css">
-    <link rel="stylesheet" href="${ctx!}/css/style.css">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="${ctx!}/css/bootstrap.min.css" media="all">
+    <link rel="stylesheet" type="text/css" href="${ctx!}/css/font/iconfont.css" media="all">
+    <link rel="stylesheet" type="text/css" href="${ctx!}/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="${ctx!}/css/main.css?v1.0.0" media="all">
 </head>
-<body class="login-body">
 
-<div class="login-box">
-    <form class="layui-form layui-form-pane" method="POST">
-        <div class="layui-form-item">
-            <h3>${siteName!}后台登录系统</h3>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">账号：</label>
+<body>
+    <div class="container-fluid larry-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-4 col-md-offset-4 col-sm-offset-2 ">
+                <!--头部搜索-->
+                <section class="panel panel-padding login-pane">
+                    <h1 class="head-title">${siteName!} - 管理后台登录</h1>
+                    <form id="loginForm" class="layui-form layui-form-pane" action="${ctx!}/admin/login" method="POST">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><i class="iconfont">&#xe672;</i> 帐　　号</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="userName" required jq-verify="required|email" placeholder="登录帐号" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><i class="iconfont">&#xe609;</i> 密　　码</label>
+                            <div class="layui-input-block">
+                                <input type="password" name="password" required jq-verify="required|pass" placeholder="登录密码" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                        	<label class="layui-form-label"><i class="iconfont">&#xe63b;</i> 验 证 码</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="verifyCode" required jq-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-input-inline"> <img src="${ctx!}/images/code.png" alt="" /></div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-inline">
+                                <input type="checkbox" name="open" lay-skin="switch" checked>
+                                <span class="font-pt">记住我的登录</span>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn ajax" jq-submit jq-filter="submit">立即提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
 
-            <div class="layui-input-inline">
-                <input type="text" name="userName" class="layui-input" lay-verify="required|email"  placeholder="账号" autocomplete="on" maxlength="20"/>
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">密码：</label>
-
-            <div class="layui-input-inline">
-                <input type="password" name="password" class="layui-input" lay-verify="password" placeholder="密码" maxlength="20"/>
-            </div>
-        </div>
-        <!-- 
-        <div class="layui-form-item">
-            <label class="layui-form-label">验证码：</label>
-
-            <div class="layui-input-inline">
-                <input type="number" name="code" class="layui-input" lay-verify="code" placeholder="验证码" maxlength="4"/><img src="./image/v.png" alt="">
-            </div>
-        </div>
-         -->
-        <div class="layui-form-item">
-
-            <div class="layui-input-block">
-                <button class="layui-btn btn-submit" lay-submit="" lay-filter="sub">立即登录</button>
-            </div>
-        </div>
-    </form>
-</div>
-
-<script type="text/javascript" src="${ctx!}/layui/layui.js"></script>
-<script type="text/javascript">
-    layui.use(['form', 'layer'], function () {
-        var $ = layui.jquery,form = layui.form(),layer = layui.layer;
-        // 验证
-        form.verify({
-            password: function (value) {
-                if (value == "") {
-                    return "请输入密码";
-                }else if(value.length < 6){
-                	return "密码不能少于6位";
-                }
-            }
-        });
-        // 提交监听
-        form.on('submit(sub)', function (data) {
-            $.ajax({
-           	   type: "POST",
-           	   url: "${ctx!}/admin/login",
-           	   data: data.field,
-           	   success: function(result){
-           		   if(result.code == 0){
-						layer.msg(result.message,{icon:1},function(){
-							window.location.href = "${ctx!}/admin/index"
-						});
-           		   }else{
-           				layer.msg(result.message,{icon:2});
-           		   }
-           	   },
-           	   error: function(result){
-           			layer.msg("连接服务器失败",{icon:2});
-           	   }
-           	});
-            return false;
-        })
-    })
-
-</script>
+    </div>
 </body>
+<script  src="${ctx!}/js/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '${ctx!}/js/admin/'
+    }).extend({
+        jqform: '../jqmodules/jqform'
+    }).use('login');
+</script>
+
 </html>
