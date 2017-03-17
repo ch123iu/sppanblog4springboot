@@ -1,74 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>登录</title>
+		<link rel="stylesheet" href="${ctx!}/plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="${ctx!}/css/login.css" />
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <title>${siteName!} - 管理后台登录</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <!-- load css -->
-    <link rel="stylesheet" type="text/css" href="${ctx!}/css/bootstrap.min.css" media="all">
-    <link rel="stylesheet" type="text/css" href="${ctx!}/css/font/iconfont.css" media="all">
-    <link rel="stylesheet" type="text/css" href="${ctx!}/css/layui.css" media="all">
-    <link rel="stylesheet" type="text/css" href="${ctx!}/css/main.css?v1.0.0" media="all">
-</head>
-
-<body>
-    <div class="container-fluid larry-wrapper">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-4 col-md-offset-4 col-sm-offset-2 ">
-                <!--头部搜索-->
-                <section class="panel panel-padding login-pane">
-                    <h1 class="head-title">${siteName!} - 管理后台登录</h1>
-                    <form id="loginForm" class="layui-form layui-form-pane" action="${ctx!}/admin/login" method="POST">
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><i class="iconfont">&#xe672;</i> 帐　　号</label>
-                            <div class="layui-input-block">
-                                <input type="text" name="userName" required jq-verify="required|email" placeholder="登录帐号" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label"><i class="iconfont">&#xe609;</i> 密　　码</label>
-                            <div class="layui-input-block">
-                                <input type="password" name="password" required jq-verify="required|pass" placeholder="登录密码" autocomplete="off" class="layui-input">
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                        	<label class="layui-form-label"><i class="iconfont">&#xe63b;</i> 验 证 码</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="verifyCode" required jq-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
-                            </div>
-                            <div class="layui-input-inline"> <img src="${ctx!}/images/code.png" alt="" /></div>
-                        </div>
-                        <div class="layui-form-item">
-                            <div class="layui-input-inline">
-                                <input type="checkbox" name="open" lay-skin="switch" checked>
-                                <span class="font-pt">记住我的登录</span>
-                            </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <div class="layui-input-block">
-                                <button class="layui-btn ajax" jq-submit jq-filter="submit">立即提交</button>
-                            </div>
-                        </div>
-                    </form>
-                </section>
-
-            </div>
-        </div>
-    </div>
-</body>
-<script  src="${ctx!}/js/layui/layui.js"></script>
-<script>
-    layui.config({
-        base: '${ctx!}/js/admin/'
-    }).extend({
-        jqform: '../jqmodules/jqform'
-    }).use('login');
-</script>
+	<body class="beg-login-bg">
+		<div class="beg-login-box">
+			<header>
+				<h1>后台登录</h1>
+			</header>
+			<div class="beg-login-main">
+				<form action="${ctx!}/admin/login" class="layui-form" method="POST">
+					<div class="layui-form-item">
+						<label class="beg-login-icon">
+                        <i class="layui-icon">&#xe612;</i>
+                    </label>
+						<input type="text" name="userName" lay-verify="required|email" autocomplete="off" placeholder="这里输入登录名" class="layui-input">
+					</div>
+					<div class="layui-form-item">
+						<label class="beg-login-icon">
+                        <i class="layui-icon">&#xe642;</i>
+                    </label>
+						<input type="password" name="password" lay-verify="required|pass" autocomplete="off" placeholder="这里输入密码" class="layui-input">
+					</div>
+					<div class="layui-form-item">
+						<div class="beg-pull-left beg-login-remember">
+							<label>记住帐号？</label>
+							<input type="checkbox" name="keepLogin" value="true" lay-skin="switch" checked title="记住帐号">
+						</div>
+						<div class="beg-pull-right">
+							<button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">
+                            <i class="layui-icon">&#xe650;</i> 登录
+                        </button>
+						</div>
+						<div class="beg-clear"></div>
+					</div>
+				</form>
+			</div>
+			<footer>
+<!-- 				<p>Beginner © www.zhengjinfan.cn</p> -->
+			</footer>
+		</div>
+		<script type="text/javascript" src="${ctx!}/plugins/layui/layui.js"></script>
+		<script>
+			layui.config({
+				base: '${ctx!}/js/component/'
+			}).use(['layer', 'form','common'], function() {
+				var layer = layui.layer,
+				$ = layui.jquery,
+				form = layui.form(),
+				common = layui.common;
+					
+				form.verify({
+					pass: [/^[\S]{6,12}$/,'密码必须6到12位，且不能出现空格'] 
+				});
+				
+				form.on('submit(login)',function(data){
+					$.ajax({
+					   type: "POST",
+					   url: "${ctx!}/admin/login",
+					   data: data.field,
+					   success: function(msg){
+						   if(msg.code == 0){
+							   common.msgSuccess(msg.message,function(){
+						   			window.location.href = "${ctx!}/admin/index";
+						   		});
+						   }else{
+							   common.msgError(msg.message);
+						   }
+					   },
+					   error :function(msg){
+						   common.msgError("连接服务器失败");
+					   }
+					});
+					return false;
+				});
+			});
+		</script>
+	</body>
 
 </html>
