@@ -4,13 +4,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.data.domain.PageRequest;
-
 import net.sppan.blog.common.Constat;
 import net.sppan.blog.entity.User;
 import net.sppan.blog.utils.CacheKit;
 import net.sppan.blog.utils.CookieKit;
 import net.sppan.blog.utils.StrKit;
+
+import org.springframework.data.domain.PageRequest;
 
 public class BaseController {
 	@Resource
@@ -42,7 +42,7 @@ public class BaseController {
 	
 	protected PageRequest getPageRequest(){
 		Integer pageNumber = 0;
-		String pageNumberStr = request.getParameter("pageNumber");
+		String pageNumberStr = request.getParameter("pageIndex");
 		if(!StrKit.isBlank(pageNumberStr)){
 			pageNumber = Integer.parseInt(pageNumberStr) - 1;
 		}
