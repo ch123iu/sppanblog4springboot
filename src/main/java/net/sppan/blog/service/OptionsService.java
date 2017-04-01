@@ -10,4 +10,10 @@ public interface OptionsService {
 
 	List<Options> findAll();
 
+	/**
+	 * 设置关于我
+	 * @param content
+	 */
+	void saveAboutMe(String content);
+
 }

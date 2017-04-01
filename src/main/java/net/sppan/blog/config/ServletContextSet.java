@@ -25,7 +25,7 @@ public class ServletContextSet  implements InitializingBean{
     public void afterPropertiesSet() throws Exception {
 		List<Options> list = optionsService.findAll();
 		for (Options options : list) {
-			servletContext.setAttribute(options.getOption_key(), options.getOption_value());
+			servletContext.setAttribute(options.getOptionKey(), options.getOptionValue());
 		}
     }
 }

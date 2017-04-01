@@ -21,9 +21,9 @@ public class Options implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String option_key;
+	private String optionKey;
 
-	private String option_value;
+	private String optionValue;
 
 	private String description;
 
@@ -35,20 +35,20 @@ public class Options implements Serializable {
 		this.id = id;
 	}
 
-	public String getOption_key() {
-		return option_key;
+	public String getOptionKey() {
+		return optionKey;
 	}
 
-	public void setOption_key(String option_key) {
-		this.option_key = option_key;
+	public void setOptionKey(String optionKey) {
+		this.optionKey = optionKey;
 	}
 
-	public String getOption_value() {
-		return option_value;
+	public String getOptionValue() {
+		return optionValue;
 	}
 
-	public void setOption_value(String option_value) {
-		this.option_value = option_value;
+	public void setOptionValue(String optionValue) {
+		this.optionValue = optionValue;
 	}
 
 	public String getDescription() {
