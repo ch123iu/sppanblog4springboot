@@ -1,128 +1,149 @@
 package net.sppan.blog.common;
 
-import java.io.Serializable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Json 统一返回消息类
- * 
- * @author SPPan
- *
+ * 返回值封装，常用于业务层需要多个返回值
  */
-public class JsonResult implements Serializable {
-	private static final long serialVersionUID = -1491499610244557029L;
-	public static int CODE_SUCCESS = 0;
-	public static int CODE_FAILURED = -1;
-	public static String[] NOOP = new String[] {};
+@SuppressWarnings({"serial", "rawtypes", "unchecked"})
+public class JsonResult extends HashMap {
 
-	private int code; // 处理状态：0: 成功
-	private String message;
-	private Object data; // 返回数据
-
-	private JsonResult(int code, String message, Object data) {
-		this.code = code;
-		this.message = message;
-		this.data = data;
+	private static final String STATUS_OK = "isOk";
+	private static final String STATUS_FAIL = "isFail";
+	
+	public JsonResult() {
+	}
+	
+	public static JsonResult ok() {
+		return new JsonResult().setOk();
+	}
+	public static JsonResult ok(String msg) {
+		return new JsonResult().setOk().set("msg", msg);
+	}
+	
+	public static JsonResult ok(Object key, Object value) {
+		return ok().set(key, value);
+	}
+	
+	public static JsonResult fail() {
+		return new JsonResult().setFail();
+	}
+	
+	public static JsonResult fail(String msg) {
+		return new JsonResult().setFail().set("msg", msg);
+	}
+	
+	public static JsonResult fail(Object key, Object value) {
+		return fail().set(key, value);
+	}
+	
+	public static JsonResult create() {
+		return new JsonResult();
+	}
+	
+	public static JsonResult create(Object key, Object value) {
+		return new JsonResult().set(key, value);
+	}
+	
+	public JsonResult setOk() {
+		super.put(STATUS_OK, Boolean.TRUE);
+		super.put(STATUS_FAIL, Boolean.FALSE);
+		return this;
+	}
+	
+	public JsonResult setFail() {
+		super.put(STATUS_OK, Boolean.FALSE);
+		super.put(STATUS_FAIL, Boolean.TRUE);
+		return this;
+	}
+	
+	public boolean isOk() {
+		Boolean isOk = (Boolean)get(STATUS_OK);
+		return isOk != null && isOk;
+	}
+	
+	public boolean isFail() {
+		Boolean isFail = (Boolean)get(STATUS_FAIL);
+		return isFail != null && isFail;
+	}
+	
+	public JsonResult set(Object key, Object value) {
+		super.put(key, value);
+		return this;
+	}
+	
+	public JsonResult set(Map map) {
+		super.putAll(map);
+		return this;
+	}
+	
+	public JsonResult set(JsonResult ret) {
+		super.putAll(ret);
+		return this;
+	}
+	
+	public JsonResult delete(Object key) {
+		super.remove(key);
+		return this;
+	}
+	
+	public <T> T getAs(Object key) {
+		return (T)get(key);
+	}
+	
+	public String getStr(Object key) {
+		return (String)get(key);
 	}
 
-	/**
-	 * 处理成功，并返回数据
-	 * 
-	 * @param data
-	 *            数据对象
-	 * @return data
-	 */
-	public static final JsonResult success(Object data) {
-		return new JsonResult(CODE_SUCCESS, "操作成功", data);
+	public Integer getInt(Object key) {
+		return (Integer)get(key);
+	}
+
+	public Long getLong(Object key) {
+		return (Long)get(key);
+	}
+
+	public Boolean getBoolean(Object key) {
+		return (Boolean)get(key);
 	}
 	
 	/**
-	 * 处理成功
-	 * 
-	 * @param message
-	 *            消息
-	 * @return data
+	 * key 存在，并且 value 不为 null
 	 */
-	public static final JsonResult success() {
-		return new JsonResult(CODE_SUCCESS, "操作成功", NOOP);
+	public boolean notNull(Object key) {
+		return get(key) != null;
 	}
-
+	
 	/**
-	 * 处理成功
-	 * 
-	 * @param message
-	 *            消息
-	 * @return data
+	 * key 不存在，或者 key 存在但 value 为null
 	 */
-	public static final JsonResult success(String message) {
-		return new JsonResult(CODE_SUCCESS, message, NOOP);
+	public boolean isNull(Object key) {
+		return get(key) == null;
 	}
-
+	
 	/**
-	 * 处理成功
-	 * 
-	 * @param message
-	 *            消息
-	 * @param data
-	 *            数据对象
-	 * @return data
+	 * key 存在，并且 value 为 true，则返回 true
 	 */
-	public static final JsonResult success(String message, Object data) {
-		return new JsonResult(CODE_SUCCESS, message, data);
+	public boolean isTrue(Object key) {
+		Object value = get(key);
+		return (value instanceof Boolean && ((Boolean)value == true));
 	}
-
+	
 	/**
-	 * 处理失败，并返回数据（一般为错误信息）
-	 * 
-	 * @param code
-	 *            错误代码
-	 * @param message
-	 *            消息
-	 * @return data
+	 * key 存在，并且 value 为 false，则返回 true
 	 */
-	public static final JsonResult failure(int code, String message) {
-		return new JsonResult(code, message, NOOP);
+	public boolean isFalse(Object key) {
+		Object value = get(key);
+		return (value instanceof Boolean && ((Boolean)value == false));
 	}
-
-	/**
-	 * 处理失败
-	 * 
-	 * @param message
-	 *            消息
-	 * @return data
-	 */
-	public static final JsonResult failure(String message) {
-		return failure(CODE_FAILURED, message);
-	}
-
-	public int getCode() {
-		return code;
-	}
-
-	public void setCode(int code) {
-		this.code = code;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public Object getData() {
-		return data;
-	}
-
-	public void setData(Object data) {
-		this.data = data;
-	}
-
-	@Override
-	public String toString() {
-		return "JsonResult [code=" + code + ", message=" + message + ", data="
-				+ data + "]";
+	
+	public boolean equals(Object ret) {
+		return ret instanceof JsonResult && super.equals(ret);
 	}
 	
 	
 }
+
+

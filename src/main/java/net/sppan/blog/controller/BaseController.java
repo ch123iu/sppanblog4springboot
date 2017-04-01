@@ -24,7 +24,7 @@ public class BaseController {
 	public User getLoginUser() {
 		String sessionId = CookieKit.getSessionIdFromCookie(request, response);
 		if (sessionId != null) {
-			Object object = cacheKit.get(Constat.cache_loginUser, sessionId);
+			Object object = cacheKit.get(Constat.CACHE_LOGINUSER, sessionId);
 			if (object != null) {
 				loginUser = (User) object;
 			}
@@ -42,7 +42,7 @@ public class BaseController {
 	
 	protected PageRequest getPageRequest(){
 		Integer pageNumber = 0;
-		String pageNumberStr = request.getParameter("pageIndex");
+		String pageNumberStr = request.getParameter("pageNumber");
 		if(!StrKit.isBlank(pageNumberStr)){
 			pageNumber = Integer.parseInt(pageNumberStr) - 1;
 		}

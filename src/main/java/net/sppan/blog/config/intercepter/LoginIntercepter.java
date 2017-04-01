@@ -40,7 +40,7 @@ public class LoginIntercepter implements HandlerInterceptor{
 		//如果获取的session不为空，证明浏览器端有登录记录
 		if (sessionId != null) {
 			//从登录缓存中取当前的登录用户
-			Object object = cacheKit.get(Constat.cache_loginUser, sessionId);
+			Object object = cacheKit.get(Constat.CACHE_LOGINUSER, sessionId);
 			if (object != null) {
 				request.setAttribute("loginUser", object);
 				return true;
@@ -50,7 +50,7 @@ public class LoginIntercepter implements HandlerInterceptor{
 				//数据库中存在session，并且还没有过期，则进行登录操作
 				if (session != null && session.getExpireAt() - System.currentTimeMillis() >0) {
 					User user = session.getUser();
-					cacheKit.put(Constat.cache_loginUser, sessionId, user);
+					cacheKit.put(Constat.CACHE_LOGINUSER, sessionId, user);
 					return true;
 				}
 			}
@@ -58,7 +58,7 @@ public class LoginIntercepter implements HandlerInterceptor{
 		//删除无用cookie
 		CookieKit.removeSessionIdFromCookie(response);
 		//跳转到登录页面
-		response.sendRedirect("/admin/login");
+		response.sendRedirect("/login");
 		return false;
 	}
 

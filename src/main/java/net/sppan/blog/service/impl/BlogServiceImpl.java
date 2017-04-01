@@ -3,6 +3,7 @@ package net.sppan.blog.service.impl;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 import net.sppan.blog.dao.BlogRepository;
 import net.sppan.blog.entity.Blog;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class BlogServiceImpl implements BlogService{
 
 	@Resource

@@ -3,6 +3,7 @@ package net.sppan.blog.service.impl;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 import net.sppan.blog.common.Constat;
 import net.sppan.blog.dao.LoginLogRepository;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 	
 	@Resource
@@ -60,7 +62,7 @@ public class UserServiceImpl implements UserService {
 			session.setExpireAt(expireAt);
 			sessionRepository.save(session);
 			
-			cacheKit.put(Constat.cache_loginUser, sessionId, user);
+			cacheKit.put(Constat.CACHE_LOGINUSER, sessionId, user);
 			
 			//添加登录日志
 			loginLogRepository.save(new LoginLog(user,new Date(),ip));
@@ -73,7 +75,34 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Page<User> findAll(PageRequest pageRequest) {
-		return userRepository.findAll(pageRequest);
+		return userRepository.findAllByOrderByCreateAtDesc(pageRequest);
+	}
+
+	@Override
+	public void logout(String sessionId) {
+		cacheKit.remove(Constat.CACHE_LOGINUSER, sessionId);
+	}
+
+	@Override
+	public User findById(Long id) {
+		return userRepository.findOne(id);
+	}
+
+	@Override
+	public void saveOrUpdate(User user) throws ServiceException{
+		if(user == null){
+			throw new ServiceException("用户不能为空");
+		}
+		user.setCreateAt(new Date());
+		userRepository.saveAndFlush(user);
+	}
+
+	@Override
+	public void delete(Long id) {
+		if(id == null){
+			throw new ServiceException("主键不能为空");
+		}
+		userRepository.delete(id);
 	}
 
 }
