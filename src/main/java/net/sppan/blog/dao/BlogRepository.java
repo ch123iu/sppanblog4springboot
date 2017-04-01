@@ -1,7 +1,5 @@
 package net.sppan.blog.dao;
 
-import java.util.List;
-
 import net.sppan.blog.entity.Blog;
 import net.sppan.blog.entity.Category;
 
@@ -18,7 +16,7 @@ public interface BlogRepository extends JpaRepository<Blog, Long>{
 	 * @param pageable
 	 * @return
 	 */
-	List<Blog> findByFeatured(int featured, Pageable pageable);
+	Page<Blog> findByFeaturedOrderByCreateAtDesc(int featured, Pageable pageable);
 
 	/**
 	 * 获取博客分页
@@ -28,4 +26,11 @@ public interface BlogRepository extends JpaRepository<Blog, Long>{
 	 * @return
 	 */
 	Page<Blog> findByCategoryAndPrivacy(Category category, int privacy, Pageable pageable);
+
+	/**
+	 * 根据浏览数量获取博客
+	 * @param pageable
+	 * @return
+	 */
+	Page<Blog> findAllByOrderByViewsDesc(Pageable pageable);
 }

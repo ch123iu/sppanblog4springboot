@@ -12,7 +12,6 @@ import net.sppan.blog.service.BlogService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,14 +22,14 @@ public class BlogServiceImpl implements BlogService{
 	
 	@Override
 	public List<Blog> findHotN(int n) {
-		Pageable pageable = new PageRequest(0,n,new Sort(Sort.Direction.DESC,"views"));
-		return blogRepository.findAll(pageable).getContent();
+		Pageable pageable = new PageRequest(0,n);
+		return blogRepository.findAllByOrderByViewsDesc(pageable).getContent();
 	}
 
 	@Override
 	public List<Blog> findFeaturedN(int n) {
-		Pageable pageable = new PageRequest(0,n,new Sort(Sort.Direction.DESC,"createAt"));
-		return blogRepository.findByFeatured(1,pageable);
+		Pageable pageable = new PageRequest(0,n);
+		return blogRepository.findByFeaturedOrderByCreateAtDesc(1,pageable).getContent();
 	}
 
 	@Override

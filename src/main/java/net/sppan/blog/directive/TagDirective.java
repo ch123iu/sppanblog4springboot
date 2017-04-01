@@ -26,7 +26,7 @@ public class TagDirective implements TemplateDirectiveModel{
 	private TagService tagService;
 	
 	@Override
-	public void execute(Environment environment, Map params, TemplateModel[] loopVars,
+	public void execute(Environment environment, @SuppressWarnings("rawtypes") Map params, TemplateModel[] loopVars,
 			TemplateDirectiveBody templateDirectiveBody) throws TemplateException, IOException {
 		
 		List<Tag> list = tagService.findAll();

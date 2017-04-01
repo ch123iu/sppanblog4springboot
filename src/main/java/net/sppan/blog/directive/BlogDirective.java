@@ -27,7 +27,7 @@ public class BlogDirective implements TemplateDirectiveModel{
 	private BlogService blogService;
 
 	@Override
-	public void execute(Environment environment, Map params, TemplateModel[] loopVars,
+	public void execute(Environment environment, @SuppressWarnings("rawtypes") Map params, TemplateModel[] loopVars,
 			TemplateDirectiveBody templateDirectiveBody) throws TemplateException, IOException {
 		List<Blog> list = new ArrayList<Blog>();
 		if(params != null && params.containsKey("type")){

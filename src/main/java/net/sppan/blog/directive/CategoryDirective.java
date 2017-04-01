@@ -26,7 +26,7 @@ public class CategoryDirective implements TemplateDirectiveModel{
 	private CategoryService categoryService;
 
 	@Override
-	public void execute(Environment environment, Map params, TemplateModel[] loopVars,
+	public void execute(Environment environment, @SuppressWarnings("rawtypes") Map params, TemplateModel[] loopVars,
 			TemplateDirectiveBody templateDirectiveBody) throws TemplateException, IOException {
 		
 		List<Category> list = categoryService.findVisible();
