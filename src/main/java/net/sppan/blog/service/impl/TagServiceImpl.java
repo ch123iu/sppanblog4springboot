@@ -1,5 +1,6 @@
 package net.sppan.blog.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,6 +10,7 @@ import net.sppan.blog.dao.TagRepository;
 import net.sppan.blog.entity.Tag;
 import net.sppan.blog.exception.ServiceException;
 import net.sppan.blog.service.TagService;
+import net.sppan.blog.utils.StrKit;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -43,10 +45,11 @@ public class TagServiceImpl implements TagService{
 				Tag dbTag = findById(tag.getId());
 				dbTag.setName(tag.getName());
 				dbTag.setStatus(tag.getStatus());
-				tagRepository.save(dbTag);
+				tagRepository.saveAndFlush(dbTag);
 			}else{
 				tag.setCount(0);
-				tagRepository.saveAndFlush(tag);
+				tag.setStatus(0);
+				tagRepository.save(tag);
 			}
 		}else{
 			throw new ServiceException("保存对象不能为空");
@@ -69,5 +72,38 @@ public class TagServiceImpl implements TagService{
 		tagRepository.saveAndFlush(tag);
 	}
 
+	@Override
+	public List<String> findAllNameList() {
+		List<String> result = new ArrayList<String>();
+		List<Tag> list = tagRepository.findAllByStatus(0);
+		for (Tag tag : list) {
+			result.add(tag.getName());
+		}
+		return result;
+	}
+
+	@Override
+	public void synBlogTag(String tags) {
+		if(StrKit.notBlank(tags)){
+			String[] split = tags.split(",");
+			
+			for (String tagName : split) {
+				Tag dbTag = tagRepository.findByName(tagName);
+				if(dbTag == null){
+					dbTag = new Tag();
+					dbTag.setName(tagName);
+					dbTag.setCount(1);
+				}else{
+					//标签统计+1
+					Integer oldCount = dbTag.getCount();
+					if(oldCount == null){
+						oldCount = 0;
+					}
+					dbTag.setCount(oldCount + 1);
+				}
+				saveOrUpdate(dbTag);
+			}
+		}
+	}
 
 }

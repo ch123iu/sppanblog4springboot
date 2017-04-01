@@ -13,9 +13,13 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import net.sppan.blog.common.Constat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "tb_blog")
-public class Blog implements Serializable{
+public class Blog implements Serializable {
 
 	/**
 	 * 
@@ -33,6 +37,7 @@ public class Blog implements Serializable{
 	@Lob
 	private String content;
 
+	@JsonFormat(pattern = Constat.DATETIME_FORMAT, timezone = "GMT+8")
 	private Date createAt;
 
 	private Integer featured;

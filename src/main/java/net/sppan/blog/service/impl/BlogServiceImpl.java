@@ -1,5 +1,6 @@
 package net.sppan.blog.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -8,7 +9,10 @@ import javax.transaction.Transactional;
 import net.sppan.blog.dao.BlogRepository;
 import net.sppan.blog.entity.Blog;
 import net.sppan.blog.entity.Category;
+import net.sppan.blog.exception.ServiceException;
 import net.sppan.blog.service.BlogService;
+import net.sppan.blog.service.TagService;
+import net.sppan.blog.utils.HtmlFilter;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +25,9 @@ public class BlogServiceImpl implements BlogService{
 
 	@Resource
 	private BlogRepository blogRepository;
+	
+	@Resource
+	private TagService tagService;
 	
 	@Override
 	public List<Blog> findHotN(int n) {
@@ -40,6 +47,65 @@ public class BlogServiceImpl implements BlogService{
 		Category category = new Category();
 		category.setId(categoryId);
 		return blogRepository.findByCategoryAndPrivacy(category ,privacy,pageRequest);
+	}
+
+	@Override
+	public Blog findById(Long id) {
+		return blogRepository.findOne(id);
+	}
+
+	@Override
+	public Page<Blog> findAll(Pageable pageable) {
+		return blogRepository.findAll(pageable);
+	}
+
+	@Override
+	public void saveOrUpdate(Blog blog) {
+		if(blog == null){
+			throw new ServiceException("操作对象不能为空");
+		}
+		
+		if(blog.getId() != null){
+			Blog dbBlog = findById(blog.getId());
+			dbBlog.setTitle(blog.getTitle());
+			dbBlog.setCategory(blog.getCategory());
+			dbBlog.setPrivacy(blog.getPrivacy());
+			dbBlog.setContent(blog.getContent());
+			dbBlog.setSummary(HtmlFilter.truncate(blog.getContent(),300));
+			dbBlog.setTags(blog.getTags());
+			blogRepository.saveAndFlush(dbBlog);
+		}else{
+			//设置博客基本属性
+			blog.setCreateAt(new Date());
+			blog.setFeatured(0);
+			blog.setStatus(0);
+			blog.setViews(0);
+			blog.setSummary(HtmlFilter.truncate(blog.getContent(),300));
+			blogRepository.save(blog);
+			
+		}
+		
+		//同步标签
+		tagService.synBlogTag(blog.getTags());
+	}
+
+	@Override
+	public void change(Long id, String type) {
+		Blog blog = findById(id);
+		switch (type) {
+		case "privacy":
+			blog.setPrivacy(blog.getPrivacy() == 0 ? 1 : 0);
+			break;
+		case "featured":
+			blog.setFeatured(blog.getFeatured() == 0 ? 1 : 0);
+			break;
+		case "status":
+			blog.setStatus(blog.getStatus() == 0 ? 1 : 0);
+			break;
+		default:
+			break;
+		}
+		blogRepository.save(blog);
 	}
 
 }

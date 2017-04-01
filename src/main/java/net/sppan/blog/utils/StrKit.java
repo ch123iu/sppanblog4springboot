@@ -31,4 +31,20 @@ public class StrKit {
 		}
 		return true;
 	}
+	
+	public static boolean notBlank(String str) {
+		return !isBlank(str);
+	}
+	
+	public static boolean notBlank(String... strings) {
+		if (strings == null) {
+			return false;
+		}
+		for (String str : strings) {
+			if (isBlank(str)) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

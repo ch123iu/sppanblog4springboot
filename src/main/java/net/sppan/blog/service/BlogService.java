@@ -2,10 +2,11 @@ package net.sppan.blog.service;
 
 import java.util.List;
 
+import net.sppan.blog.entity.Blog;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-
-import net.sppan.blog.entity.Blog;
+import org.springframework.data.domain.Pageable;
 
 
 public interface BlogService {
@@ -32,4 +33,27 @@ public interface BlogService {
 	 * @return
 	 */
 	Page<Blog> findByCategoryANDPrivacy(Long categoryId, int privacy, PageRequest pageRequest);
+
+	/**
+	 * 根据ID查找
+	 * @param id
+	 * @return
+	 */
+	Blog findById(Long id);
+
+	/**
+	 * 分页查询
+	 * @param pageable
+	 * @return
+	 */
+	Page<Blog> findAll(Pageable pageable);
+
+	void saveOrUpdate(Blog blog);
+
+	/**
+	 * 改变博客状态
+	 * @param id
+	 * @param type
+	 */
+	void change(Long id, String type);
 }

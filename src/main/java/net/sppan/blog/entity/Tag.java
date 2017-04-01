@@ -24,6 +24,14 @@ public class Tag implements Serializable{
 
 	private String name;
 
+	/**
+	 * 显示状态
+	 * <br>
+	 * 0 显示
+	 * <br>
+	 * 1隐藏
+	 * <br>
+	 */
 	private Integer status;
 
 	@Column(nullable = false,columnDefinition="int default 0")

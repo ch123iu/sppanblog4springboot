@@ -6,8 +6,10 @@ import javax.annotation.Resource;
 
 import net.sppan.blog.common.JsonResult;
 import net.sppan.blog.controller.BaseController;
-import net.sppan.blog.entity.Tag;
-import net.sppan.blog.service.TagService;
+import net.sppan.blog.entity.Blog;
+import net.sppan.blog.entity.Category;
+import net.sppan.blog.service.BlogService;
+import net.sppan.blog.service.CategoryService;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,40 +23,48 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/admin/tag")
-public class AdminTagController extends BaseController {
+@RequestMapping("/admin/blog")
+public class AdminBlogController extends BaseController{
+	
 	@Resource
-	private TagService tagService;
-
+	private BlogService blogService;
+	
+	@Resource
+	private CategoryService categoryService;
+	
 	@GetMapping("/index")
-	public String index() {
-		return "admin/tag/index";
+	public String index(){
+		return "admin/blog/index";
 	}
-
+	
 	@PostMapping("/list")
 	@ResponseBody
-	public Page<Tag> list() {
+	public Page<Blog> list() {
 		PageRequest pageRequest = getPageRequest();
-		Page<Tag> page = tagService.findAll(pageRequest);
+		Page<Blog> page = blogService.findAll(pageRequest);
 		return page;
 	}
-
+	
 	@GetMapping("/form")
 	public String form(@RequestParam(required=false) Long id,
 			ModelMap map
 			){
+		List<Category> categories = categoryService.findVisible();
+		map.put("categories", categories);
+		
 		if(id != null){
-			Tag tag = tagService.findById(id);
-			map.put("tag", tag);
+			Blog blog = blogService.findById(id);
+			map.put("blog", blog);
 		}
-		return "admin/tag/form";
+		return "admin/blog/form";
 	}
 	
 	@PostMapping("/save")
 	@ResponseBody
-	public JsonResult save(Tag tag){
+	public JsonResult save(Blog blog){
 		try {
-			tagService.saveOrUpdate(tag);
+			blog.setAuthor(getLoginUser());
+			blogService.saveOrUpdate(blog);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.fail(e.getMessage());
@@ -62,37 +72,15 @@ public class AdminTagController extends BaseController {
 		return JsonResult.ok();
 	}
 	
-	@PostMapping("/{id}/del")
+	@PostMapping("/{id}/change")
 	@ResponseBody
-	public JsonResult delete(
-			@PathVariable Long id
-			){
+	public JsonResult change(@PathVariable Long id,String type){
 		try {
-			tagService.delete(id);
+			blogService.change(id,type);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResult.fail(e.getMessage());
 		}
 		return JsonResult.ok();
 	}
-	
-	@PostMapping("/{id}/changeStatus")
-	@ResponseBody
-	public JsonResult changeStatus(@PathVariable Long id){
-		try {
-			tagService.changeStatus(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResult.fail(e.getMessage());
-		}
-		return JsonResult.ok();
-	}
-	
-	@GetMapping("/tags_name")
-	@ResponseBody
-	public List<String> tags_name(){
-		List<String> tagsList = tagService.findAllNameList();
-		return tagsList;
-	}
-	
 }
