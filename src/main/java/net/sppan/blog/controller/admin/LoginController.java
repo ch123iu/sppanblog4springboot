@@ -69,11 +69,35 @@ public class LoginController extends BaseController{
 	 * @param response
 	 * @return
 	 */
-	@GetMapping("logout")
+	@GetMapping("/logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response){
 		String sessionId = CookieKit.getSessionIdFromCookie(request, response);
 		userService.logout(sessionId);
 		CookieKit.removeSessionIdFromCookie(response);
 		return "redirect:/admin";
+	}
+	
+	@GetMapping("/update_form")
+	public String updatePWD(){
+		return "admin/update_form";
+	}
+	
+	@PostMapping("/updatePwd")
+	@ResponseBody
+	public JsonResult updatePwd(
+			HttpServletRequest request, 
+			HttpServletResponse response,
+			String oldpassword,
+			String password1,
+			String password2
+			){
+		try {
+			userService.updatePassword(getLoginUser(), oldpassword, password1, password2);
+			CookieKit.removeSessionIdFromCookie(response);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.fail(e.getMessage());
+		}
+		return JsonResult.ok();
 	}
 }

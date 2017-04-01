@@ -105,4 +105,24 @@ public class UserServiceImpl implements UserService {
 		userRepository.delete(id);
 	}
 
+	@Override
+	public void updatePassword(User user, String oldpassword, String password1,
+			String password2) {
+		if(StrKit.isBlank(oldpassword) || StrKit.isBlank(password1) || StrKit.isBlank(password2)){
+			throw new ServiceException("参数不完整");
+		}
+		
+		if(!password1.equals(password2)){
+			throw new ServiceException("两次输入密码不一致");
+		}
+		
+		User dbUser = findById(user.getId());
+		String passwordMD5 = MD5Kit.generatePasswordMD5(password1, user.getSalt());
+		if(!user.getPassword().equals(passwordMD5)){
+			throw new ServiceException("旧密码不正确");
+		}
+		dbUser.setPassword(passwordMD5);
+		userRepository.saveAndFlush(dbUser);
+	}
+
 }
