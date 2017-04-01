@@ -224,7 +224,7 @@
     	    		   dataType: "json",
     	    		   url: "${ctx!}/admin/blog/" + id + "/del",
     	    		   success: function(msg){
-	 	   	    			layer.msg(msg.msg, {time: 2000},function(){
+	 	   	    			layer.msg(msg.msg||"操作成功", {time: 2000},function(){
 	 	   	    				$('#table_list').bootstrapTable("refresh");
 	 	   	    				layer.close(index);
 	 	   					});

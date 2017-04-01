@@ -3,9 +3,9 @@ package net.sppan.blog.service;
 import java.util.List;
 
 import net.sppan.blog.entity.Blog;
+import net.sppan.blog.entity.Category;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 
@@ -32,7 +32,7 @@ public interface BlogService {
 	 * @param pageRequest
 	 * @return
 	 */
-	Page<Blog> findByCategoryANDPrivacy(Long categoryId, int privacy, PageRequest pageRequest);
+	Page<Blog> findByCategoryANDPrivacy(Long categoryId, int privacy, Pageable pageable);
 
 	/**
 	 * 根据ID查找
@@ -56,4 +56,17 @@ public interface BlogService {
 	 * @param type
 	 */
 	void change(Long id, String type);
+
+	/**
+	 * 删除
+	 * @param id
+	 */
+	void delete(Long id);
+
+	/**
+	 * 根据分类统计文章数量
+	 * @param category 分类
+	 * @return
+	 */
+	Long getBlogCountByCategory(Category category);
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import net.sppan.blog.dao.CategoryRepository;
 import net.sppan.blog.entity.Category;
 import net.sppan.blog.exception.ServiceException;
+import net.sppan.blog.service.BlogService;
 import net.sppan.blog.service.CategoryService;
 
 @Service
@@ -20,6 +21,8 @@ public class CategoryServiceImpl implements CategoryService{
 	
 	@Resource
 	private CategoryRepository categoryRepository;
+	@Resource
+	private BlogService blogService;
 
 	@Override
 	public List<Category> findVisible() {
@@ -51,7 +54,12 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public void delete(Long id) {
-		categoryRepository.delete(id);
+		Long count = blogService.getBlogCountByCategory(findById(id));
+		if (count != null && count > 0) {
+			throw new ServiceException("分类下面包含博客，不能删除");
+		}else{
+			categoryRepository.delete(id);
+		}
 	}
 
 	@Override

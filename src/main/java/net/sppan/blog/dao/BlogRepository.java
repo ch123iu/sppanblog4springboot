@@ -33,4 +33,11 @@ public interface BlogRepository extends JpaRepository<Blog, Long>{
 	 * @return
 	 */
 	Page<Blog> findAllByOrderByViewsDesc(Pageable pageable);
+
+	/**
+	 * 根据分类获取文章数量
+	 * @param category
+	 * @return
+	 */
+	Long countByCategory(Category category);
 }

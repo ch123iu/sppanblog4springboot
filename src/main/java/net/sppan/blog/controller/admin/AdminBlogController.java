@@ -83,4 +83,18 @@ public class AdminBlogController extends BaseController{
 		}
 		return JsonResult.ok();
 	}
+	
+	@PostMapping("/{id}/del")
+	@ResponseBody
+	public JsonResult delete(
+			@PathVariable Long id
+			){
+		try {
+			blogService.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResult.fail(e.getMessage());
+		}
+		return JsonResult.ok();
+	}
 }

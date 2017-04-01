@@ -43,10 +43,10 @@ public class BlogServiceImpl implements BlogService{
 
 	@Override
 	public Page<Blog> findByCategoryANDPrivacy(Long categoryId, int privacy,
-			PageRequest pageRequest) {
+			Pageable pageable) {
 		Category category = new Category();
 		category.setId(categoryId);
-		return blogRepository.findByCategoryAndPrivacy(category ,privacy,pageRequest);
+		return blogRepository.findByCategoryAndPrivacy(category ,privacy,pageable);
 	}
 
 	@Override
@@ -106,6 +106,16 @@ public class BlogServiceImpl implements BlogService{
 			break;
 		}
 		blogRepository.save(blog);
+	}
+
+	@Override
+	public void delete(Long id) {
+		blogRepository.delete(id);
+	}
+
+	@Override
+	public Long getBlogCountByCategory(Category category) {
+		return blogRepository.countByCategory(category);
 	}
 
 }
