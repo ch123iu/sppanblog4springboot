@@ -9,6 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import net.sppan.blog.common.Constat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "tb_user")
@@ -20,7 +26,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = -1785824516147698045L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String nickName;
@@ -31,11 +37,19 @@ public class User implements Serializable {
 
 	private String salt;
 
-	@Column(nullable = false,columnDefinition="Integer default 0")
+	/**
+	 * 状态 <br>
+	 * -1锁定<br>
+	 * 0未激活<br>
+	 * 1激活
+	 */
+	@Column(nullable = false, columnDefinition = "Integer default 0")
 	private Integer status;
 
 	private String avatar;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern = Constat.DATETIME_FORMAT, timezone = "GMT+8")
 	private Date createAt;
 
 	private String ip;

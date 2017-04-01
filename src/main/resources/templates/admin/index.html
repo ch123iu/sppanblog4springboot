@@ -1,100 +1,160 @@
 <!DOCTYPE html>
-
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<title>后台管理模板</title>
-		<meta name="renderer" content="webkit">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="format-detection" content="telephone=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
 
-		<link rel="stylesheet" href="${ctx!}/plugins/layui/css/layui.css" media="all" />
-		<link rel="stylesheet" href="${ctx!}/css/global.css" media="all">
-		<link rel="stylesheet" href="${ctx!}/plugins/font-awesome/css/font-awesome.min.css">
-		<script type="text/javascript">
-			var rootPath = "${ctx!}";
-		</script>
+    <title>${siteName!}-后台管理</title>
 
-	</head>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
 
-	<body>
-		<div class="layui-layout layui-layout-admin" style="border-bottom: solid 5px #1aa094;">
-			<div class="layui-header header header-demo">
-				<div class="layui-main">
-					<div class="admin-login-box">
-						<a class="logo" style="left: 0;" href="http://beginner.zhengjinfan.cn/demo/beginner_admin/">
-							<span style="font-size: 22px;">${siteName!}</span>
-						</a>
-						<div class="admin-side-toggle">
-							<i class="fa fa-bars" aria-hidden="true"></i>
-						</div>
-						<div class="admin-side-full">
-							<i class="fa fa-life-bouy" aria-hidden="true"></i>
-						</div>
-					</div>
-					<ul class="layui-nav admin-header-item">
-						<li class="layui-nav-item">
-							<a href="javascript:;" class="admin-header-user">
-								<img src="images/0.jpg" />
-								<span>beginner</span>
-							</a>
-							<dl class="layui-nav-child">
-								<dd>
-									<a href="javascript:;"><i class="fa fa-user-circle" aria-hidden="true"></i> 个人信息</a>
-								</dd>
-								<dd>
-									<a href="javascript:;"><i class="fa fa-gear" aria-hidden="true"></i> 设置</a>
-								</dd>
-								<dd>
-									<a href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
-								</dd>
-							</dl>
-						</li>
-					</ul>
-					<ul class="layui-nav admin-header-item-mobile">
-						<li class="layui-nav-item">
-							<a href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="layui-side layui-bg-black" id="admin-side">
-				<div class="layui-side-scroll" id="admin-navbar-side" lay-filter="side"></div>
-			</div>
-			<div class="layui-body" style="bottom: 0;border-left: solid 2px #1AA094;" id="admin-body">
-				<div class="layui-tab admin-nav-card layui-tab-brief" lay-filter="admin-tab">
-					<ul class="layui-tab-title">
-						<li class="layui-this">
-							<i class="fa fa-dashboard" aria-hidden="true"></i>
-							<cite>欢迎</cite>
-						</li>
-					</ul>
-					<div class="layui-tab-content" style="min-height: 150px; padding: 5px 0 0 0;">
-						<div class="layui-tab-item layui-show">
-							<iframe src="${ctx!}/admin/welcome"></iframe>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="layui-footer footer footer-demo" id="admin-footer">
-				<div class="layui-main">
-					<p>2016 &copy;
-						<a href="http://m.zhengjinfan.cn/">m.zhengjinfan.cn/</a> LGPL license
-					</p>
-				</div>
-			</div>
-			<div class="site-tree-mobile layui-hide">
-				<i class="layui-icon">&#xe602;</i>
-			</div>
-			<div class="site-mobile-shade"></div>
-			
-			<script type="text/javascript" src="${ctx!}/plugins/layui/layui.js"></script>
-			<script src="${ctx!}/js/index.js"></script>
-		</div>
-	</body>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico"> 
+    <link href="${ctx!}/admin/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="${ctx!}/admin/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="${ctx!}/admin/css/animate.css" rel="stylesheet">
+    <link href="${ctx!}/admin/css/style.css?v=4.1.0" rel="stylesheet">
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs" style="font-size:20px;">
+                                        <i class="fa fa-area-chart"></i>
+                                        <strong class="font-bold">${siteName!}</strong>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="logo-element">${siteName!}
+                        </div>
+                    </li>
+                    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                        <span class="ng-scope">分类</span>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" href="${ctx!}/admin/welcome">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">主页</span>
+                        </a>
+                    </li>
+                    <li>
+                       <a class="J_menuItem" href="${ctx!}/admin/user/index">
+                        <i class="fa fa-user"></i>
+                        <span class="nav-label">用户管理</span>
+                       </a>
+                    </li>
+                    <li>
+                       <a class="J_menuItem" href="${ctx!}/admin/category/index">
+                        <i class="fa fa-tasks"></i>
+                        <span class="nav-label">分类管理</span>
+                       </a>
+                    </li>
+                    <li>
+                       <a class="J_menuItem" href="${ctx!}/admin/tag/index">
+                        <i class="fa fa-tag"></i>
+                        <span class="nav-label">标签管理</span>
+                       </a>
+                    </li>
+                    <li>
+                       <a class="J_menuItem" href="${ctx!}/admin/blog/index">
+                        <i class="fa fa-heart"></i>
+                        <span class="nav-label">文章管理</span>
+                       </a>
+                    </li>
+                    
+                    <li>
+                       <a class="J_menuItem" href="${ctx!}/admin/about/index">
+                        <i class="fa fa-cloud"></i>
+                        <span class="nav-label">关于我</span>
+                       </a>
+                    </li>
+                     
+                    <li class="line dk"></li>
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-user"></i> <span class="label label-primary"></span>${loginUser.nickName}
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a onclick="modPwd()">
+                                        <div>
+                                            <i class="fa fa-edit"></i> 修改密码
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="${ctx!}/logout">
+                                        <div>
+                                            <i class="fa fa-remove"></i> 注销
+                                            <span class="pull-right text-muted small">${loginUser.userName}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe id="J_iframe" width="100%" height="100%" src="${ctx!}/admin/welcome" frameborder="0" data-id="index_v1.html" seamless></iframe>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+    </div>
+
+    <!-- 全局js -->
+    <script src="${ctx!}/admin/js/jquery.min.js?v=2.1.4"></script>
+    <script src="${ctx!}/admin/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="${ctx!}/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="${ctx!}/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="${ctx!}/admin/js/plugins/layer/layer.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="${ctx!}/admin/js/hAdmin.js?v=4.1.0"></script>
+    <script type="text/javascript" src="${ctx!}/admin/js/index.js"></script>
+    <script type="text/javascript">
+    function modPwd(){
+    	layer.open({
+  	      type: 2,
+  	      title: '修改密码',
+  	      shadeClose: true,
+  	      shade: false,
+  	      area: ['893px', '600px'],
+  	      content: '${ctx!}/update_form',
+  	      end: function(index){
+  	    	  //修改完密码以后刷新当前页面
+  	    	  window.location.reload(true);
+  	      }
+  	    });
+  	}
+    </script>
+</body>
 
 </html>

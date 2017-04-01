@@ -3,6 +3,7 @@ package net.sppan.blog.service.impl;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import net.sppan.blog.entity.Category;
 import net.sppan.blog.service.CategoryService;
 
 @Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService{
 	
 	@Resource

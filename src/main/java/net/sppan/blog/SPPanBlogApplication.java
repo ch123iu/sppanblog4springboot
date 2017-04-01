@@ -32,7 +32,7 @@ public class SPPanBlogApplication  extends WebMvcConfigurerAdapter {
         super.addInterceptors(registry);
         registry.addInterceptor(commonInterceptor)
                 .addPathPatterns("/**");
-//        registry.addInterceptor(loginIntercepter).addPathPatterns("/admin/**")
-//        		.excludePathPatterns("/admin/login");
+        registry.addInterceptor(loginIntercepter).addPathPatterns("/admin/**")
+        		.excludePathPatterns("/admin/login");
     }
 }

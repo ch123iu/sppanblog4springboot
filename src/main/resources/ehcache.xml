@@ -26,7 +26,6 @@
 			eternal="false"
 			timeToIdleSeconds="120"
 			timeToLiveSeconds="120"
-
 			diskSpoolBufferSizeMB="30"
 			maxEntriesLocalDisk="10000000"
 			diskExpiryThreadIntervalSeconds="120"
@@ -46,6 +45,7 @@
            timeToLiveSeconds="0"
            overflowToDisk="false"
             />
+            
             
     <!-- 系统文章分类缓存 -->        
     <cache name="categoryCache"
