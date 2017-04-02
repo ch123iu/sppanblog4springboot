@@ -16,4 +16,9 @@ public interface OptionsService {
 	 */
 	void saveAboutMe(String content);
 
+	/**
+	 * 初始化站点配置
+	 */
+	void initSiteOptions();
+
 }

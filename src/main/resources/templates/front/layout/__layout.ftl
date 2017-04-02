@@ -42,7 +42,7 @@
 			    </ul>
 			    <form class="am-topbar-form am-topbar-right am-form-inline layui-form am-hide-sm-only" role="search" action="${ctx!}/s/">
 			      <div class="am-form-group am-form-icon">
-			        <input id="keyword" name="keyword" type="text" value="#(keyWord??)" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
+			        <input id="keyword" name="keyword" type="text" value="${keyWord!}" class="am-form-field am-input-sm am-radius" placeholder="请输入要搜索的关键词">
 			        <i class="am-icon-search"></i>
 			        <button type="submit" class="layui-btn layui-btn-small am-hide-sm-only qing-btn-search">搜索</button>
 			      </div>
@@ -57,7 +57,7 @@
 		<form class="m-topbar-form am-topbar-right am-form-inline layui-form" role="search" action="${ctx!}/s/">
 	      <div class="am-form-group am-form-icon">
 	      	<i class="am-icon-search"></i>
-	        <input id="keyword" name="keyword" value="#(keyWord??)" type="text" class="am-form-field am-form-field am-radius" placeholder="请输入要搜索的关键词">
+	        <input id="keyword" name="keyword" value="${keyWord!}" type="text" class="am-form-field am-form-field am-radius" placeholder="请输入要搜索的关键词">
 	      </div>
 		</form>
 	</div>

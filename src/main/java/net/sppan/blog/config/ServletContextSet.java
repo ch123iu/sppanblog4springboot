@@ -24,6 +24,13 @@ public class ServletContextSet  implements InitializingBean{
 	@Override
     public void afterPropertiesSet() throws Exception {
 		List<Options> list = optionsService.findAll();
+		
+		//如果没有查询到系统配置，则进行配置初始化
+		if(list == null || list.size() <= 0){
+			optionsService.initSiteOptions();
+		}
+		
+		list = optionsService.findAll();
 		for (Options options : list) {
 			servletContext.setAttribute(options.getOptionKey(), options.getOptionValue());
 		}
