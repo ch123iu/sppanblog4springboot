@@ -82,7 +82,7 @@
     <div class="qing-text-center">
        <p class="am-text-sm">${siteDescription!}</p>
     </div>
-    <div class="qing-text-center">Copyright © 2017 #(siteName)  |  All Rights Reserved.  |  power by SPPan</div>    
+    <div class="qing-text-center">Copyright © 2017 ${siteName!}  |  All Rights Reserved.  |  power by SPPan</div>    
   </footer>
 	<script src="${ctx!}/front/js/jquery.min.js"></script>
 	<script src="${ctx!}/front/js/amazeui.min.js"></script>
