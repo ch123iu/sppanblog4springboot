@@ -33,11 +33,11 @@
 			  <div class="am-collapse am-topbar-collapse" id="blog-collapse">
 			    <ul class="am-nav am-nav-pills am-topbar-nav nav-menu-box">
 			      <li><a href="${ctx!}/">首页</a></li>
-					<@categoryDirective>
+					<@categoryList>
 						<#list list as x>
 							<li><a href="${ctx!}/b/${(x.id)!}">${(x.name)!}</a></li>
 						</#list>
-					</@categoryDirective>
+					</@categoryList>
 			      <li><a href="${ctx!}/about">关于</a></li>
 			    </ul>
 			    <form class="am-topbar-form am-topbar-right am-form-inline layui-form am-hide-sm-only" role="search" action="${ctx!}/s/">
@@ -72,7 +72,7 @@
 	    
 		<!-- 侧边栏 开始-->
 	    <div class="am-u-md-4 am-u-sm-12">
-	    	<#include "/views/front/layout/_sidebar.html" />
+	    	<#include "/front/layout/_sidebar.ftl" />
 	    </div>
 	    <!-- 侧边栏结束-->
 	</div>

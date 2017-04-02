@@ -18,7 +18,7 @@
 <#if (currentPage > 1)>
 	<li class="am-pagination-prev"><a href="${link}${currentPage - 1}${append}">&lt;</a></li>
 </#if>
-<#if(currentPage - 3 > 1)>
+<#if (currentPage - 3 > 1)>
 	<li><a href="${link}1${append}">1</a></li>
 </#if>
 <#list startPage..endPage as i>
