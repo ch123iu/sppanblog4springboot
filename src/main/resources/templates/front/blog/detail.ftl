@@ -69,7 +69,6 @@
 	<!-- 发表评论结束 -->
 </div>
 <!-- comment end-->
-</@html>
 <#assign js>
 <script type="text/javascript">
 layui.use('code', function(){ //加载code模块
@@ -81,3 +80,4 @@ layui.use('code', function(){ //加载code模块
 });
 </script>
 </#assign>
+</@html>
