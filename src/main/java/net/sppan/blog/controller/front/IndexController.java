@@ -10,7 +10,7 @@ public class IndexController extends BaseController {
 
 	@RequestMapping("/")
 	public String index(){
-		return "redirect:/b/1/1";
+		return "redirect:/b/1";
 	}
 	
 	@RequestMapping("/about")

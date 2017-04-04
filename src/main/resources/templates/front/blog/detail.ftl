@@ -1,13 +1,10 @@
-#include("/views/front/layout/__layout.html")
-#include("/views/front/layout/_paginate.html")
-#set(seoTitle="JFinalBlog")
-#@layout()
-#define main()
+<#include "/front/layout/__layout.ftl">
+<@html>
 <!--nav start-->
 <div class="qing-blog-nav">
-	<a href="#(ctx)/"><i class="am-icon-home"></i>首页</a> 
-	<i class="am-icon-angle-double-right"></i> <a href="#(ctx)/b/#(category.id??)">#(category.name??)</a>
-	<i class="am-icon-angle-double-right"></i> <a>#(blog.title)</a>
+	<a href="${ctx!}/"><i class="am-icon-home"></i>首页</a> 
+	<i class="am-icon-angle-double-right"></i> <a href="${ctx!}/b/${(blog.category.id)!}">${(blog.category.name)!}</a>
+	<i class="am-icon-angle-double-right"></i> <a>${(blog.title)!}</a>
 </div>
 <!--nav end-->
 
@@ -15,29 +12,25 @@
 <div class="qing-content">
 	<!-- blog header start -->
 	<div class="qing-blog-header qing-text-center">
-		<h1 class="am-article-title">#(blog.title)</h1>
+		<h1 class="am-article-title">${(blog.title)!}</h1>
 		<div class="qing-blog-tips">
-			<span><i class="am-icon-user qing-color-author" title="作者"></i>&nbsp;#(blog.authorName)</span>&nbsp; 
-			<span><i class="am-icon-clock-o qing-color-clock" title="时间"></i>&nbsp;#date(blog.createAt, "yyyy-MM-dd HH:mm")</span>&nbsp; 
-			<span><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i>&nbsp;阅读(<em>#(blog.views)</em>)</span>&nbsp;
-			<span><i class="am-icon-comments-o qing-color-comment" title="评论"></i>&nbsp;评论(<em><span class="ds-thread-count" data-thread-key="#(blog.id)"></span></em>)</span>&nbsp; 
+			<span><i class="am-icon-user qing-color-author" title="作者"></i>&nbsp;${(blog.author.nickName)!}</span>&nbsp; 
+			<span><i class="am-icon-clock-o qing-color-clock" title="时间"></i>&nbsp;${(blog.createAt)!}</span>&nbsp; 
+			<span><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i>&nbsp;阅读(<em>${(blog.views)!}</em>)</span>&nbsp;
+			<span><i class="am-icon-comments-o qing-color-comment" title="评论"></i>&nbsp;评论(<em><span class="ds-thread-count" data-thread-key="${(blog.id)!}"></span></em>)</span>&nbsp; 
 <!-- 			<span><i class="am-icon-heart-o qing-color-heart" title="点赞"></i> 点赞(<em>0</em>)</span> -->
 		</div>
 	</div>
 	<!-- blog header end -->
 	
 	<!-- blog content start -->
-	<div class="qing-margin-top">#(blog.content)</div>
+	<div class="qing-margin-top">${(blog.content)!}</div>
 	<!-- blog content end -->
 
 	<!-- blog tag  start -->
 	<div class="qing-margin-top qing-blog-tag">
 		<span class="am-icon-tags"> &nbsp;</span> 
-			#for(tag : splitExt(blog.tags??,","))
-	    		<a href="#(ctx)/t/#(tag??)"><span class="am-radius">#(tag??)</span></a>
-	    	#else
-	    		没有标签
-	    	#end
+		<a href="${ctx!}/t/#(tag??)"><span class="am-radius">${(blog.tags)!}</span></a>
 	</div>
 	<!-- blog tag  end -->
 	
@@ -48,7 +41,7 @@
 <div class="qing-content qing-margin-top">
 	<div id="commentContainer"></div>
 	<!-- 转载到开始 -->
-	<div class="ds-share" data-thread-key="#(blog.id)" data-title="#(blog.title)" data-images="" data-content="" data-url="#(siteDomain)/b/view/#(blog.id)">
+	<div class="ds-share" data-thread-key="${(blog.id)!}" data-title="${(blog.title)!}" data-images="" data-content="" data-url="${siteDomain!}/b/view/${(blog.id)!}">
 	   <div class="ds-share-inline">
 	     <ul  class="ds-share-icons-16">
 	       <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
@@ -68,15 +61,14 @@
 	<div class="qing-comment-post">发表评论</div>
 	<div class="layui-form-pane qing-margin-top">
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="#(blog.id)" data-title="#(blog.title)" data-url="#(siteDomain)/b/view/#(blog.id)"></div>
+		<div class="ds-thread" data-thread-key="${(blog.id)!}" data-title="${(blog.title)!}" data-url="${siteDomain!}/b/view/${(blog.id)!}"></div>
 		<!-- 多说评论框 end -->
 	</div>
 	<!-- 发表评论结束 -->
 </div>
 <!-- comment end-->
-#end
-#define js()
-
+</@html>
+<#assign js>
 <script type="text/javascript">
 layui.use('code', function(){ //加载code模块
 	  layui.code({
@@ -86,4 +78,4 @@ layui.use('code', function(){ //加载code模块
 		});
 });
 </script>
-#end
+</#assign>

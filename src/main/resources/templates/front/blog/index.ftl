@@ -2,10 +2,10 @@
 <#include "/front/layout/_paginate.ftl">
 <@html>
 <div id="blog-list">
-<#list blogPage.list as x>
+<#list page.content as x>
 	<div class="qing-entry-text">
    	 <div class="qing-list-title">
-   	 	<span class="qing-category">${(x.categoryName)!}<i></i></span><a href="${ctx!}/b/view/${x.id}"> ${x.title}</a>
+   	 	<span class="qing-category">${(x.category.name)!}<i></i></span><a href="${ctx!}/b/view/${x.id}"> ${x.title}</a>
    	 </div>
      <div class="qing-list-hint">
        	<span><i class="am-icon-user qing-color-author" title="作者"></i>&nbsp;${x.authorName}</span>&nbsp;
@@ -29,5 +29,5 @@
  -->
 </div>
 <!-- 分页 -->
-<@paginate currentPage=blogPage.pageNumber  totalPage=blogPage.totalPage link="/b/" + c + "?p=" />
+<@paginate currentPage=page.number + 1  totalPage=page.totalPages link="/b/" + c + "?p=" />
 </@html>

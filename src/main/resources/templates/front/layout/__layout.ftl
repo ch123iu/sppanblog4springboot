@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="${ctx!}/front/css/amazeui.min.css">
   <link rel="stylesheet" href="${ctx!}/front/layui/css/layui.css"/>
   <link rel="stylesheet" href="${ctx!}/front/css/app.css"/>
+  ${css!}
 </head>
 
 <body id="blog">
@@ -122,6 +123,8 @@
 	})();
 	</script>
 	<!-- 多说公共JS代码 end -->
+	
+	${js!}
 </body>
 </html>
 </#macro>
