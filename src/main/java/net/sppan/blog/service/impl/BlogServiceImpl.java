@@ -118,4 +118,9 @@ public class BlogServiceImpl implements BlogService{
 		return blogRepository.countByCategory(category);
 	}
 
+	@Override
+	public Page<Blog> findByTagName(String tagName,Pageable pageable) {
+		return blogRepository.findByTagsContaining(tagName, pageable);
+	}
+
 }

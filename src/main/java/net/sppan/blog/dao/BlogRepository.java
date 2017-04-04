@@ -40,4 +40,11 @@ public interface BlogRepository extends JpaRepository<Blog, Long>{
 	 * @return
 	 */
 	Long countByCategory(Category category);
+
+	/**
+	 * 根据标签查找
+	 * @param tagName
+	 * @return
+	 */
+	Page<Blog> findByTagsContaining(String tagName,Pageable pageable);
 }

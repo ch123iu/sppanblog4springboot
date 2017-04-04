@@ -50,6 +50,7 @@ public class Blog implements Serializable {
 	@JoinColumn(name = "category_id")
 	private Category category;
 
+	@Column(length = 500)
 	private String summary;
 
 	private String tags;

@@ -15,10 +15,4 @@ public interface OptionsService {
 	 * @param content
 	 */
 	void saveAboutMe(String content);
-
-	/**
-	 * 初始化站点配置
-	 */
-	void initSiteOptions();
-
 }

@@ -69,4 +69,11 @@ public interface BlogService {
 	 * @return
 	 */
 	Long getBlogCountByCategory(Category category);
+
+	/**
+	 * 根据标签查找
+	 * @param tagName
+	 * @return
+	 */
+	Page<Blog> findByTagName(String tagName, Pageable pageable);
 }

@@ -3,18 +3,16 @@ package net.sppan.blog.controller.front;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import net.sppan.blog.controller.BaseController;
-
 @Controller
-public class IndexController extends BaseController {
+public class IndexController {
 
 	@RequestMapping("/")
-	public String index(){
+	public String index() {
 		return "redirect:/b/1";
 	}
-	
+
 	@RequestMapping("/about")
-	public String about(){
+	public String about() {
 		return "front/about";
 	}
 }

@@ -14,32 +14,21 @@ import net.sppan.blog.entity.Blog;
 import net.sppan.blog.service.BlogService;
 
 @Controller
-@RequestMapping("/b")
-public class BlogController{
+public class TagController {
 	
 	@Resource
 	private BlogService blogService;
-	
-	@RequestMapping("/{categoryId}")
+
+	@RequestMapping("/t/{tagName}")
 	public String index(
-			@PathVariable("categoryId") Long categoryId,
+			@PathVariable String tagName,
 			@RequestParam(required = false,defaultValue="1") Integer p,
-			ModelMap map
+			ModelMap map 
 			){
+		map.put("tagName", tagName);
 		PageRequest pageRequest = new PageRequest(p - 1, 5);
-		Page<Blog> page = blogService.findByCategoryANDPrivacy(categoryId,0,pageRequest);
+		Page<Blog> page = blogService.findByTagName(tagName, pageRequest);
 		map.put("page", page);
-		map.put("c", categoryId);
-		return "front/blog/index";
-	}
-	
-	@RequestMapping("/view/{id}")
-	public String view(
-			@PathVariable("id") Long id,
-			ModelMap map
-			){
-		Blog blog = blogService.findById(id);
-		map.put("blog", blog);
-		return "front/blog/detail";
+		return "front/tags/index";
 	}
 }

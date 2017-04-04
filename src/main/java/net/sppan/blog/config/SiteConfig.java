@@ -22,12 +22,7 @@ public class SiteConfig implements InitializingBean{
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		//initDB();
 		setOptions();
-	}
-
-	private void initDB() {
-		optionsService.initSiteOptions();
 	}
 	
 	private void setOptions() {

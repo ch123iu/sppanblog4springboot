@@ -1,6 +1,11 @@
 <#include "/front/layout/__layout.ftl">
 <#include "/front/layout/_paginate.ftl">
 <@html>
+<div id="qing-notice-cnt">
+	<div class="qing-notice">
+		<i class="am-icon-tag"></i><span id="qing-notice-text">标签【${tagName!}】相关内容如下</span>
+	</div>
+</div>
 <div id="blog-list">
 <#list page.content as x>
 	<div class="qing-entry-text">
@@ -24,12 +29,7 @@
      	 </div> 
    </div>
 </#list>
-<#-- 
-<div class="qing-content">
-	没有任何数据
-</div>
- -->
 </div>
 <!-- 分页 -->
-<@paginate currentPage=page.number + 1  totalPage=page.totalPages link="/b/" + c + "?p=" />
+<@paginate currentPage=page.number + 1  totalPage=page.totalPages link="/t/" + tagName + "?p=" />
 </@html>

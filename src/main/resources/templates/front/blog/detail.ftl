@@ -30,7 +30,9 @@
 	<!-- blog tag  start -->
 	<div class="qing-margin-top qing-blog-tag">
 		<span class="am-icon-tags"> &nbsp;</span> 
-		<a href="${ctx!}/t/#(tag??)"><span class="am-radius">${(blog.tags)!}</span></a>
+		<#list blog.tags?split(",") as tag>
+			<a href="${ctx!}/t/${tag}"><span class="am-radius">${tag}</span></a>
+		</#list>
 	</div>
 	<!-- blog tag  end -->
 	
