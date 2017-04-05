@@ -59,4 +59,6 @@ public interface TagService {
 	 * @param tags
 	 */
 	public void synBlogTag(String tags);
+
+	void countTagHasBlog();
 }

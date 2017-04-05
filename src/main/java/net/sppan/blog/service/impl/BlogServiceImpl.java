@@ -9,8 +9,10 @@ import javax.transaction.Transactional;
 import net.sppan.blog.dao.BlogRepository;
 import net.sppan.blog.entity.Blog;
 import net.sppan.blog.entity.Category;
+import net.sppan.blog.entity.Tag;
 import net.sppan.blog.exception.ServiceException;
 import net.sppan.blog.service.BlogService;
+import net.sppan.blog.service.CategoryService;
 import net.sppan.blog.service.TagService;
 import net.sppan.blog.utils.HtmlFilter;
 
@@ -28,6 +30,9 @@ public class BlogServiceImpl implements BlogService{
 	
 	@Resource
 	private TagService tagService;
+	
+	@Resource
+	private CategoryService categoryService;
 	
 	@Override
 	public List<Blog> findHotN(int n) {
@@ -51,7 +56,11 @@ public class BlogServiceImpl implements BlogService{
 
 	@Override
 	public Blog findById(Long id) {
-		return blogRepository.findOne(id);
+		Blog blog = blogRepository.findOne(id);
+		//浏览量增加
+		blog.setViews(blog.getViews() + 1);
+		blogRepository.saveAndFlush(blog);
+		return blog;
 	}
 
 	@Override
@@ -87,6 +96,16 @@ public class BlogServiceImpl implements BlogService{
 		
 		//同步标签
 		tagService.synBlogTag(blog.getTags());
+		
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				//重新统计分类下面的文章数量
+				categoryService.countCategoryHasBlog();
+				//重新统计标签下面的文章数量
+				tagService.countTagHasBlog();
+			}
+		}).start();
 	}
 
 	@Override
@@ -123,4 +142,9 @@ public class BlogServiceImpl implements BlogService{
 		return blogRepository.findByTagsContaining(tagName, pageable);
 	}
 
+	@Override
+	public Long getBlogCountByTag(Tag tag) {
+		return blogRepository.countByTagsContaining(tag.getName());
+	}
+	
 }

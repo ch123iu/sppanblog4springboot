@@ -61,9 +61,6 @@
 			<h2>最新评论</h2>
 		</div>
 		<div class="qing-panel-body">
-			<!-- 多说最新评论 start -->
-			<div class="ds-recent-comments" data-num-items="10" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
-			<!-- 多说最新评论 end -->
 		</div>
 	</div>
 </div>

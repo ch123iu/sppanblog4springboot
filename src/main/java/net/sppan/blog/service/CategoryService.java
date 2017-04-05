@@ -46,4 +46,6 @@ public interface CategoryService {
 	 * @param id
 	 */
 	public void changeStatus(Long id);
+
+	public void countCategoryHasBlog();
 }

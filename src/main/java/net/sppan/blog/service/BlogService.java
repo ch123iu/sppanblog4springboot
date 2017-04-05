@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.sppan.blog.entity.Blog;
 import net.sppan.blog.entity.Category;
+import net.sppan.blog.entity.Tag;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -76,4 +77,11 @@ public interface BlogService {
 	 * @return
 	 */
 	Page<Blog> findByTagName(String tagName, Pageable pageable);
+
+	/**
+	 * 根据标签统计文章数量
+	 * @param tag
+	 * @return
+	 */
+	Long getBlogCountByTag(Tag tag);
 }

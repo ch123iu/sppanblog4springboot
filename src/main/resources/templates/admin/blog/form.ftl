@@ -147,7 +147,7 @@
    	    		   url: "${ctx!}/admin/blog/save",
    	    		   data: $(form).serialize(),
    	    		   success: function(msg){
-	   	    			layer.msg(msg.msg, {time: 2000},function(){
+	   	    			layer.msg(msg.msg||"操作成功", {time: 2000},function(){
 	   	    				//只有添加成功了 ，才能关闭当前窗口
 	   	    				if(msg.isOk){
 	   	    					layer.closeAll();

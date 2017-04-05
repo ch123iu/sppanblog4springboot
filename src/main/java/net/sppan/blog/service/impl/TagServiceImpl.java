@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import net.sppan.blog.dao.TagRepository;
 import net.sppan.blog.entity.Tag;
 import net.sppan.blog.exception.ServiceException;
+import net.sppan.blog.service.BlogService;
 import net.sppan.blog.service.TagService;
 import net.sppan.blog.utils.StrKit;
 
@@ -22,6 +23,9 @@ public class TagServiceImpl implements TagService{
 	
 	@Resource
 	private TagRepository tagRepository;
+	
+	@Resource
+	private BlogService blogService;
 
 	@Override
 	public List<Tag> findAll() {
@@ -104,6 +108,16 @@ public class TagServiceImpl implements TagService{
 				saveOrUpdate(dbTag);
 			}
 		}
+	}
+
+	@Override
+	public void countTagHasBlog() {
+		List<Tag> list = tagRepository.findAll();
+		for (Tag tag : list) {
+			Long count = blogService.getBlogCountByTag(tag);
+			tag.setCount(count.intValue());
+		}
+		tagRepository.save(list);
 	}
 
 }

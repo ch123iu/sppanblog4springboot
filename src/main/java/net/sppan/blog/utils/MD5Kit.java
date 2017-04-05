@@ -41,7 +41,7 @@ public class MD5Kit {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(generatePasswordMD5("111111", "SPPan"));;
+		System.out.println(generatePasswordMD5("111111", "zmxyyZJkE-N6JjRhujp6U8l4Yu7vuQDZ"));;
 	}
 	
 }

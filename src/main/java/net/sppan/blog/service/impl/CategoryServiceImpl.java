@@ -72,4 +72,14 @@ public class CategoryServiceImpl implements CategoryService{
 		categoryRepository.saveAndFlush(category);
 	}
 
+	@Override
+	public void countCategoryHasBlog() {
+		List<Category> list = categoryRepository.findAll();
+		for (Category category : list) {
+			Long count = blogService.getBlogCountByCategory(category);
+			category.setCount(count.intValue());
+		}
+		categoryRepository.save(list);
+	}
+
 }
