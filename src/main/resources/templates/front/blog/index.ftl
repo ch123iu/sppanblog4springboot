@@ -2,6 +2,7 @@
 <#include "/front/layout/_paginate.ftl">
 <@html>
 <div id="blog-list">
+<#if (page.content?size > 0)>
 <#list page.content as x>
 	<div class="qing-entry-text">
    	 <div class="qing-list-title">
@@ -24,11 +25,11 @@
      	 </div> 
    </div>
 </#list>
-<#-- 
+<#else>
 <div class="qing-content">
 	没有任何数据
 </div>
- -->
+</#if>
 </div>
 <!-- 分页 -->
 <@paginate currentPage=page.number + 1  totalPage=page.totalPages link="/b/" + c + "?p=" />

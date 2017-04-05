@@ -1,6 +1,6 @@
 <#include "/front/layout/__layout.ftl">
 <@html>
 <div class="qing-content">
-	${siteAboutMe!}
+	${siteAboutMe!'暂无数据'}
 </div>
 </@html>
