@@ -20,6 +20,7 @@ public class OptionsServiceImpl implements OptionsService{
 	public final String SITENAMEKEY = "siteName";
 	public final String SITEDESCRIPTIONKEY = "siteDescription";
 	public final String SITEDOMAINKEY = "siteDomain";
+	public final String SITECHANGYANAPPID = "siteChangyanAppId";
 	
 	@Resource
 	private ServletContext servletContext;
