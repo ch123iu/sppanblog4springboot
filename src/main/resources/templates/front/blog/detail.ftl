@@ -41,17 +41,18 @@
 
 <!-- comment start-->
 <div class="qing-content qing-margin-top">
-	<div id="commentContainer"></div>
+	<div id="commentContainer">
+	</div>
 </div>
 <!-- comment end-->
 <#assign js>
 <script type="text/javascript">
-layui.use('code', function(){ //加载code模块
-	  layui.code({
-		  elem: 'pre', //默认值为.layui-code
-		  title: '程序代码',
-		  about: false
-		});
+layui.use(['code'], function(){ //加载code模块
+	layui.code({
+		elem: 'pre', //默认值为.layui-code
+		title: '程序代码',
+		about: false
+	});
 });
 </script>
 </#assign>
