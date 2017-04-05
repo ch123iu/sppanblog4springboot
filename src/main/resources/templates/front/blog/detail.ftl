@@ -39,11 +39,12 @@
 </div>
 <!--blog end -->
 
+
 <!-- comment start-->
 <div class="qing-content qing-margin-top">
-	<div id="commentContainer">
-	</div>
 </div>
+
+
 <!-- comment end-->
 <#assign js>
 <script type="text/javascript">
