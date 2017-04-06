@@ -39,6 +39,7 @@ import org.apache.lucene.store.NIOFSDirectory;
 import org.apache.lucene.util.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -189,11 +190,15 @@ public class LuceneSearcher implements ISearcher {
             Long id = Long.parseLong(doc.get("id"));
             Blog blog = blogService.findById(id);
             
-            blog.setTitle(setHighlighter(query, doc, "title"));
-            blog.setSummary(setHighlighter(query, doc, "summary"));
-            blog.setContent(setHighlighter(query, doc, "content"));
+            //此处要注意，必须使用拷贝，否则对象 为持久态的，后面的设置高亮赋值会修改到数据库数据
+            Blog result = new Blog();
+    		BeanUtils.copyProperties(blog, result);
+    		
+    		result.setTitle(setHighlighter(query, doc, "title"));
+    		result.setSummary(setHighlighter(query, doc, "summary"));
+    		result.setContent(setHighlighter(query, doc, "content"));
             
-            blogs.add(blog);
+            blogs.add(result);
         }
         return blogs;
     }
