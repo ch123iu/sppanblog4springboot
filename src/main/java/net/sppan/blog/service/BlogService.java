@@ -84,4 +84,10 @@ public interface BlogService {
 	 * @return
 	 */
 	Long getBlogCountByTag(Tag tag);
+
+	/**
+	 * 查询所有博客
+	 * @return
+	 */
+	List<Blog> findAll();
 }
