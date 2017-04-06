@@ -1,4 +1,4 @@
-package net.sppan.blog.dao;
+package net.sppan.blog.repository;
 
 import net.sppan.blog.entity.Options;
 

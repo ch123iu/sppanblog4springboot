@@ -6,9 +6,9 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
-import net.sppan.blog.dao.TagRepository;
 import net.sppan.blog.entity.Tag;
 import net.sppan.blog.exception.ServiceException;
+import net.sppan.blog.repository.TagRepository;
 import net.sppan.blog.service.BlogService;
 import net.sppan.blog.service.TagService;
 import net.sppan.blog.utils.StrKit;

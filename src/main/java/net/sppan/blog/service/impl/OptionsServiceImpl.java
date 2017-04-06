@@ -8,8 +8,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import net.sppan.blog.dao.OptionsRepository;
 import net.sppan.blog.entity.Options;
+import net.sppan.blog.repository.OptionsRepository;
 import net.sppan.blog.service.OptionsService;
 
 @Service

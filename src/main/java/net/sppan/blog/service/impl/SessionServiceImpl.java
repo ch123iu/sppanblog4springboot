@@ -5,8 +5,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import net.sppan.blog.dao.SessionRepository;
 import net.sppan.blog.entity.Session;
+import net.sppan.blog.repository.SessionRepository;
 import net.sppan.blog.service.SessionService;
 
 @Service

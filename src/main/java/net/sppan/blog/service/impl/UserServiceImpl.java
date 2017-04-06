@@ -6,13 +6,13 @@ import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
 import net.sppan.blog.common.Constat;
-import net.sppan.blog.dao.LoginLogRepository;
-import net.sppan.blog.dao.SessionRepository;
-import net.sppan.blog.dao.UserRepository;
 import net.sppan.blog.entity.LoginLog;
 import net.sppan.blog.entity.Session;
 import net.sppan.blog.entity.User;
 import net.sppan.blog.exception.ServiceException;
+import net.sppan.blog.repository.LoginLogRepository;
+import net.sppan.blog.repository.SessionRepository;
+import net.sppan.blog.repository.UserRepository;
 import net.sppan.blog.service.UserService;
 import net.sppan.blog.utils.CacheKit;
 import net.sppan.blog.utils.MD5Kit;

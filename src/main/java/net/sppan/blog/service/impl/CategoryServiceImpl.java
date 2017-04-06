@@ -9,9 +9,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import net.sppan.blog.dao.CategoryRepository;
 import net.sppan.blog.entity.Category;
 import net.sppan.blog.exception.ServiceException;
+import net.sppan.blog.repository.CategoryRepository;
 import net.sppan.blog.service.BlogService;
 import net.sppan.blog.service.CategoryService;
 

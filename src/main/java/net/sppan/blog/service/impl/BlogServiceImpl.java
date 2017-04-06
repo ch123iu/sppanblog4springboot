@@ -6,11 +6,11 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
-import net.sppan.blog.dao.BlogRepository;
 import net.sppan.blog.entity.Blog;
 import net.sppan.blog.entity.Category;
 import net.sppan.blog.entity.Tag;
 import net.sppan.blog.exception.ServiceException;
+import net.sppan.blog.repository.BlogRepository;
 import net.sppan.blog.service.BlogService;
 import net.sppan.blog.service.CategoryService;
 import net.sppan.blog.service.TagService;
