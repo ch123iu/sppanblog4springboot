@@ -40,6 +40,7 @@ import org.apache.lucene.util.Version;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -55,13 +56,16 @@ public class LuceneSearcher implements ISearcher {
 
     private static Directory directory;
     
+    @Value("${lucene.index.path}")
+    private String indexPath;
+    
     @Resource
     private BlogService blogService;
 
     @PostConstruct
     public void init() {
         try {
-            File indexDir = new File("c:/lucene");
+            File indexDir = new File(indexPath);
             if (!indexDir.exists()) {
                 indexDir.mkdirs();
             }
