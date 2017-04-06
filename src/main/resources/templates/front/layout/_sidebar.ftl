@@ -54,7 +54,7 @@
 		</div>
 	</div>
 </div>
-<!-- 最新评论 -->
+<!-- 最新评论
 <div class="qing-margin-bottom">
 	<div class="qing-panel">
 		<div class="qing-panel-title">
@@ -64,6 +64,7 @@
 		</div>
 	</div>
 </div>
+ -->
 <!-- 友情链接 -->
 <div class="qing-margin-bottom">
  	<div class="qing-panel">
@@ -72,7 +73,7 @@
  	  	</div>
  	  	<div class="qing-panel-body">
  	  		<ul>
-<!--             	<li><a href="" target="_blank">{{item.name}}</a></li> -->
+             	<li><a href="https://git.oschina.net/whoismy8023" target="_blank">我的开源中国</a></li>
           	</ul>
  	  	</div>
  	</div>
