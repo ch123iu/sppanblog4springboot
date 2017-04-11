@@ -9,7 +9,7 @@
    	 	<span class="qing-category">${(x.category.name)!}<i></i></span><a href="${ctx!}/b/view/${x.id}"> ${x.title}</a>
    	 </div>
      <div class="qing-list-hint">
-       	<span><i class="am-icon-user qing-color-author" title="作者"></i>&nbsp;${x.authorName}</span>&nbsp;
+       	<span><i class="am-icon-user qing-color-author" title="作者"></i>&nbsp;${x.author.nickName}</span>&nbsp;
 	    <span><i class="am-icon-clock-o qing-color-clock" title="时间"></i>&nbsp;${x.createAt}</span>&nbsp;
 	    <span><i class="am-icon-eye-slash qing-color-eye" title="阅读"></i>&nbsp;阅读(${x.views})</span>&nbsp;
         <span><i class="am-icon-comments-o qing-color-comment" title="评论"></i>&nbsp;评论(<span id = "sourceId::${x.id}" class = "cy_cmt_count" ></span>)</span>&nbsp;
