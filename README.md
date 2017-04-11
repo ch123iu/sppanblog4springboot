@@ -1,5 +1,5 @@
  **SPPanBlog4SpringBoot博客系统** 
-1. 后台使用springboot、spring data jpa实现。
+1. 后台使用springboot、spring data jpa实现。全文检索使用Lucene。
 2. 模版引擎使用超级经典的freemarker。
 3. 管理后台UI使用Hadmin后台模版框架。
 4. 页面前台使用超级小清新的layui。
