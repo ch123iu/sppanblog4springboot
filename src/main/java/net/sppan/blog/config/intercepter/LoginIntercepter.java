@@ -51,6 +51,7 @@ public class LoginIntercepter implements HandlerInterceptor{
 				if (session != null && session.getExpireAt() - System.currentTimeMillis() >0) {
 					User user = session.getUser();
 					cacheKit.put(Constat.CACHE_LOGINUSER, sessionId, user);
+					request.setAttribute("loginUser", user);
 					return true;
 				}
 			}
